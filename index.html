@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Controle Acadêmico Online</title>
+    <link type="image/x-icon" href="imagens/favicon.ico" rel="shortcut icon">
+    <link type="text/css" href="css/estilos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container panel panel-primary text-center" id="header" role="banner">
+        <div>
+            <label>
+
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-xs-8">
+                <h1>
+                    <a>Controle Acadêmico Online</a>
+                </h1>
+            </div>
+        </div>
+        <div>
+            <label>
+
+            </label>
+        </div>
+    </div>
+    <div class="container panel panel-primary" id="conteudo" role="main">
+        <div>
+            <label>
+
+            </label>
+        </div>
+        <form class="form-horizontal" role="form" name="login_form" method="post" action="Controller">
+            <div class="form-group">
+                <label class="control-label  col-sm-2" for="login">Matricula/Usuario</label>
+                <div class="col-sm-6">
+                    <input name="login" type="text" class="form-control" id="login" size="10" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label  col-sm-2" for="senha">Senha</label>
+                <div class="col-sm-6">
+                    <input name="senha" type="password" class="form-control" id="senha" size="8" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input id="radio_alu" type="radio" name="comando" value="AlunoLogin" checked>
+                            Aluno
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input id="radio_coo" type="radio" name="comando" value="CoordenacaoLogin" checked>
+                            Coordenação
+
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-primary" type="submit">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"></div>
+        </form>
+        <div>
+            <label>
+
+            </label>
+        </div>
+    </div>
+</body>
+</html>
