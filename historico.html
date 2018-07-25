@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pré-Matricula Online</title>
+    <link type="text/css" href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./scripts/funcoes.js"></script>
+</head>
+<body id="corpo">
+    <div class="container panel panel-primary text-center" id="header" role="banner">
+        <div class="row">
+
+            <div class="col-sm-8 col-xs-8">
+                <h1><a href="./perfil.html">Sistema de Pré-Matricula Online</a></h1>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div id="faixaAviso"></div> --><div class="container panel panel-primary hidden-print" id="menu" role="navigation">
+        <ul class="nav nav-pills">
+            <li><a href="perfil.html"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
+            <li class="dropdown">
+                <a id="alunoInfo" role="button" data-toggle="dropdown" href="#">Minhas informações <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="alunoInfo">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="cadastro.html">Meu Cadastro</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="historico.html">Histórico</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="curriculo.html">Currículo</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a id="alunoMatriculas" role="button" data-toggle="dropdown" href="#">Matrículas <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="alunoMatriculas">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="disciplinas.html">Turmas ofertadas</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a id="alunoUsuario" role="button" data-toggle="dropdown" href="#">Usuário <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="alunoUsuario">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="senhas.html">Alterar senha</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="index.html">Sair</a></li>
+        </ul>
+    </div>
+    <div class="container panel panel-primary text-center" id="conteudo" role="main">
+
+        <div class="text-right hidden-print">
+            <div class="btn-group">
+                <a class="btn btn-primary" href="cadastro.html">Cadastro</a>
+                <a class="btn btn-primary" href="historico.html">Histórico</a>
+                <a class="btn btn-primary" href="curriculo.html">Currículo</a>
+            </div>
+        </div><h2>Histórico Acadêmico</h2>
+
+        <div>
+            <div class="panel">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>
+                            Universidade Federal de Campina Grande<br>
+                            Pró-Reitoria de Ensino<br>
+                            Coordenação de Controle Acadêmico<br>
+                            Histórico Acadêmico
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Identificação do aluno</h2></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-8"><b>Aluno</b>: MATRICULA SEU NOME</div>
+                        <div class="col-md-6 col-sm-4"><b>CPF</b>: CPF</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-8"><b>Curso</b>: CIÊNCIA DA COMPUTAÇÃO - D (14102100)</div>
+                        <div class="col-md-6 col-sm-4"><b>Currículo</b>: QND ENTROU</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-4">
+                            <b>Ingresso</b>: SISU
+                            (20XX.X)
+                        </div>
+                        <div class="col-md-6 col-sm-8">
+                            <b>Situação</b>: REGULAR
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="disciplinas">
+                <div class="panel-heading"><h2>Disciplinas</h2></div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1">Código</th>
+                            <th class="col-md-5">Disciplina</th>
+                            <th class="col-md-1 text-center">Tipo</th>
+                            <th class="col-md-1 text-center">Créditos</th>
+                            <th class="col-md-1 text-center">Carga horária</th>
+                            <th class="col-md-1 text-center">Média</th>
+                            <th class="col-md-1">Situação</th>
+                            <th class="col-md-1">Período</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>cod aq</td>
+                            <td>cadeira aq</td>
+                            <td class="text-center">tipo tipo</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">sua nota</td>
+                            <td>PAGOU? PERDEU? ARREGOU?</td>
+                            <td>PERIODO</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="panel panel-default" id="integralizacao">
+                <div class="panel-heading"><h2>Integralização curricular</h2></div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Tipo de disciplina</th>
+                            <th class="text-center" colspan="2">Carga horária</th>
+                            <th class="text-center" colspan="2">Créditos</th>
+                            <th class="text-center" colspan="2">Quantidade</th>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Mínimo</th>
+                            <th class="text-center">Integralizado</th>
+                            <th class="text-center">Mínimo</th>
+                            <th class="text-center">Integralizado</th>
+                            <th class="text-center">Mínimo</th>
+                            <th class="text-center">Integralizado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Obrigatórias</th>
+                            <td class="text-center">1980</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">132</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">33</td>
+                            <td class="text-center">0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Optativas</th>
+                            <td class="text-center">840</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">56</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">14</td>
+                            <td class="text-center">0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Atividades complementares</th>
+                            <td class="text-center">450</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">30</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">3</td>
+                            <td class="text-center">0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Eletivas</th>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Extra-curriculares</th>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total cursado</th>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">0</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Execução curricular</th>
+                            <td class="text-center">3270</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">218</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center">
+                                -
+                            </td>
+                        </tr>
+                </table>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 text-right"><b>CRA</b>:</div>
+                        <div class="col-md-2 col-sm-2">0,00</div>
+                        <div class="col-md-2 col-sm-2 text-right"><b>MC</b>:</div>
+                        <div class="col-md-2 col-sm-2">0,00</div>
+                        <div class="col-md-2 col-sm-2 text-right"><b>IEA</b>:</div>
+                        <div class="col-md-2 col-sm-2">0,00</div>
+                    </div>
+                    <hr>
+                    <div class="row" id="periodos-integralizados">
+                        <div class="col-md-4 col-sm-4 text-right"><b>Períodos integralizados</b>:</div>
+                        <div class="col-md-1 col-sm-1 total">0</div>
+                        <div class="col-md-1 col-sm-1 text-right">Mínimo:</div>
+                        <div class="col-md-1 col-sm-1">9</div>
+                        <div class="col-md-1 col-sm-1 text-right">Máximo:</div>
+                        <div class="col-md-4 col-sm-1 periodos">14</div>
+
+                    </div>
+                    <div class="row" id="trancamentos-totais">
+                        <div class="col-md-4 col-sm-4 text-right"><b>Trancamentos totais</b>:</div>
+                        <div class="col-md-1 col-sm-1 total">0</div>
+                        <div class="col-md-1 col-sm-1 text-right">Máximo:</div>
+                        <div class="col-md-1 col-sm-1">4</div>
+                        <div class="col-md-1 col-sm-1 text-right">Períodos:</div>
+                        <div class="col-md-4 col-sm-4 periodos">-</div>
+                    </div>
+                    <div class="row" id="matriculas-institucionais">
+                        <div class="col-md-4 col-sm-4 text-right"><b>Matrículas institucionais</b>:</div>
+                        <div class="col-md-1 col-sm-1 total">0</div>
+                        <div class="col-md-1 col-sm-1 text-right">Máximo:</div>
+                        <div class="col-md-1 col-sm-1">6</div>
+                        <div class="col-md-1 col-sm-1 text-right">Períodos:</div>
+                        <div class="col-md-4 col-sm-4 periodos">
+                            -
+                        </div>
+                    </div>
+                    <div class="row" id="mobilidade-estudantil">
+                        <div class="col-md-4 col-sm-4 text-right"><b>Mobilidade Estudantil</b>:</div>
+                        <div class="col-md-1 col-sm-1 total">0</div>
+                        <div class="col-md-1 col-sm-1 col-md-offset-2 text-right">Períodos:</div>
+                        <div class="col-md-4 col-sm-4 periodos">
+                            -
+                        </div>
+                    </div>
+                    <div class="row" id="carga-matriculada">
+                        <div class="col-md-4 col-sm-4 text-right"><b>Créditos matriculados</b>:</div>
+                        <div class="col-md-1 col-sm-1 total">00</div>
+                        <div class="col-md-1 col-sm-1 text-right">Mínimo:</div>
+                        <div class="col-md-1 col-sm-1">16</div>
+                        <div class="col-md-1 col-sm-1 text-right">Máximo:</div>
+                        <div class="col-md-4 col-sm-1">24</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Notas de ingresso Vestibular/ENEM</h2></div>
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>Disciplina</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LINGUAGENS E CÓDIGOS</td>
+                            <td>000</td>
+                        </tr>
+                        <tr>
+                            <td>CIÊNCIAS HUMANAS</td>
+                            <td>000</td>
+                        </tr>
+                        <tr>
+                            <td>CIÊNCIAS DA NATUREZA</td>
+                            <td>000</td>
+                        </tr>
+                        <tr>
+                            <td>MATEMÁTICA</td>
+                            <td>000</td>
+                        </tr>
+                        <tr>
+                            <td>REDAÇÃO</td>
+                            <td>000</td>
+                        </tr>
+                        <tr class="active">
+                            <th scope="row">MÉDIA</td>
+                            <td>000,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
