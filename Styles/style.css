@@ -129,12 +129,11 @@ text-decoration:none
     clear:left
 
 }
-#menu select{
-    color:#000
+    #menu select {
+        color: #000
+    }
 
-}
-
-img.alerta {
+img.brasao {
     position: relative;
     top: 15%;
     right: 0;
