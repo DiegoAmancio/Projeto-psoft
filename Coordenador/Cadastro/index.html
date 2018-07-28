@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
+    <script src="/Scripts/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,84 +60,30 @@
         <div>
             <h2 class="text-center">Cadastro de Disciplina</h2>
         </div>
-        <div>
-            <label>
 
-            </label>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">
-                Nome da Disciplina
-            </label>
-            <div class="col-sm-6">
-                <input class="form-control" type="text" id="disc_nome" v-model="disc_nome">
-            </div>
-        </div>
-        <div>
-            <label>
-
-            </label>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">
-                Código da Disciplina
-            </label>
-            <div class="col-sm-6">
-                <input class="form-control" type="text" id="disc_cod" v-model="disc_cod">
-            </div>
-        </div>
-        <div>
-            <label>
-
-            </label>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">
-                N° de Créditos
-            </label>
-            <div class="col-sm-6">
-                <input class="form-control" type="number" min="0" id="creditos" v-model="creditos">
-            </div>
-        </div>
-        <div>
-            <label>
-
-            </label>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">
+        <form id="cadastro_disc" class="form-group" onsubmit="valida_cadastro_disciplina()">
+            <p>
+                Nome da Disciplina <input class="form-control" type="text" id="nome" v-model="nome"> 
+            </p>
+            <p>
+                Código da Disciplina <input class="form-control" type="text" id="codigo" v-model="codigo">
+            </p>
+            <p>
+                N° de Créditos <input class="form-control" type="number" min="0" id="creditos" onchange="atualizacarga()" v-model="creditos">
+            </p>
+            <p>
                 Carga Horária
-            </label>
-            <div class="col-sm-6">
-                <input class="form-control" type="number" min="0" id="creditos" v-model="creditos">
-            </div>
-        </div>
-        <div>
-            <label>
+                <input class="form-control" type="number" min="0" id="carga" v-model="carga">
+            </p>
+                <input type="radio" name="grade" id="old_grade" value="old_grade" v-model="grade">Grade Antiga
+                    </br>
+                <input type="radio" name="grade" id="new_grade" value="new_grade" v-model="grade">Grade Nova
+                    </br>
 
-            </label>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-xs-offset-1 col-sm-6">
-                <div class="radio">
-                    <label>
-                        <input type="checkbox" name="tipo" id="old_grade" value="old_grade" v-model="tipo">Grade Antiga
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="checkbox" name="tipo" id="new_grade" value="new_grade" v-model="tipo">Grade Nova
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-10">
-                <button class="btn btn-primary" type="submit" id="salvar" able>OK</button>
-            </div>
-        </div>
+                <button class="btn btn-primary" type="submit" id="cadastrar_disc" disabled>OK</button>
+            </form>
     </div>
     <script src="/Scripts/client.js"></script>
+    <script src="/Scripts/jq.js"></script>
 </body>
 </html>
