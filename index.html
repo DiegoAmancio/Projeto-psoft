@@ -15,17 +15,53 @@
 
 <body>
     <div class="container panel panel-primary text-center" id="header" role="banner">
-            <div class="row col-sm-8 col-xs-8">
-                <h1><a>Sistema de Pré-Matricula Online</a></h1>
+        
+        <div class="row">
+            
+            <div class="col-sm-2 col-xs-3">
+                <img class="alerta" src="./Imagens/ufcg.png" alt="Universidade Federal de Campina Grande">
             </div>
+            <div class="col-sm-8 col-xs-8">
+                <h1>
+                    <a href="./index.html">Sistema de Pré-Matricula Online</a>
+                </h1>
+            </div>  
+        </div>
     </div>
+
+    <div class="container panel panel-primary" id="conteudo" role="main">
         <form id="usuario" action='/' onsubmit="valida_login()">
-            <p>Email: <input type="email" name="email" id="email" value ="email" placeholder="email @ccc" v-model="email"> </p>
-            <input type="radio" name="tipo" id="aluno" value="aluno" v-model="tipo"> Aluno <br>
-            <input type="radio" name="tipo" id="coord" value="coord" v-model="tipo"> Coordenação <br>
-            <button type="submit" id="salvar" disabled>OK</button>
-        </form> 
+            <label class="control-label col-sm-2" for="login">Email</label>
+            <div class="col-sm-6">
+                <input type="email" id="email" placeholder="seu_login@ccc.ufcg.edu.br" v-model="email">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="tipo" id="aluno" value="aluno" v-model="tipo" checked>Aluno</label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="tipo" id="coord" value="coord" v-model="tipo">Coordenação</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary" type="submit" id="salvar" able>OK</button>
+                </div>
+            </div>
+            
+
+        </form>
+    </div>
+    
+        
     <script src="/Scripts/client.js"></script>
     <script src="/Scripts/jq.js"></script>
 </body>
 </html>
+<footer>
+ 
+</footer>
