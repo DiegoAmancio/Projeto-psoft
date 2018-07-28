@@ -3,6 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="415663373552-3foebghlgeuglmmaan8p0j0id0oi6vlq.apps.googleusercontent.com">
     <title>Sistema de Pré-Matricula Online</title>
     <link rel="shortcut icon" type="image/x-icon" href="/Imagens/ufcg.png">
     <link type="text/css" href="Styles/style.css" rel="stylesheet">
@@ -11,6 +12,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
     <script src="/Scripts/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/Scripts/client.js"></script>
+    <script src="/Scripts/jq.js"></script>
+
 </head>
 
 <body>
@@ -30,36 +35,16 @@
     </div>
 
     <div class="container panel panel-primary" id="conteudo" role="main">
-        <form id="usuario" action='/' onsubmit="valida_login()">
-            <label class="control-label col-sm-2">Email Institucional</label>
-            <div class="col-sm-6">
-                <input class="form-control" type="email" id="email" placeholder="seu_login@ccc.ufcg.edu.br" v-model="email">
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="tipo" id="aluno" value="aluno" v-model="tipo" checked>Aluno</label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="tipo" id="coord" value="coord" v-model="tipo">Coordenação</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-primary" type="submit" id="salvar" able>OK</button>
-                </div>
-            </div>
-            
+        <div class="col-sm-8 col-xs-8">
+            <h3 class="text-right">Olá! Faça login clicando no icone abaixo! :D</h3>
+        </div>
+       
+        <div class="col-sm-8 col-xs-8">
+            <div class="g-signin2" data-onsuccess="OnSignIn"></div>
+        </div>
 
-        </form>
     </div>
-    
-        
-    <script src="/Scripts/client.js"></script>
-    <script src="/Scripts/jq.js"></script>
+   
 </body>
 </html>
 <footer>

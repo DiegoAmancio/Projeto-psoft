@@ -1,26 +1,22 @@
-new Vue({
-    el: '#usuario',
-    data: {
-        message: "",
-        senha: "",
-        tipo: ""
-    },
-})
+import GoogleAuth from 'vue-google-auth';
+import Vue from 'vue';
 
-function valida_login(){
-    email = document.getElementById('email').value;
-    tipo = document.getElementsByName('tipo')[0].value;
-    split = email.split('@');
-    tamanho = split.length;
-    nome = split[0];
-    site = split[1];
-    if(tamanho == 2 && site == 'ccc.ufcg.edu.br'){
-        //Valida
-        alert(tipo);
-    }
-    else{
-        alert('Login invalido');
-    }
-}
 
-console.log("Teste");
+Vue.use(GoogleAuth, { clientID: '415663373552-3foebghlgeuglmmaan8p0j0id0oi6vlq.apps.googleusercontent.com' });
+Vue.googleAuth().load();
+
+
+Vue.googleAuth().onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+};
+
+Vue.googleAuth().signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+};
