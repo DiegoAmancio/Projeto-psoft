@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
+    <script src="/Scripts/client.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                         <a role="menuitem" tabindex="-1" href="/Aluno_Cadastro/index.html">Realizar Pré-Matricula</a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Disciplinas/index.html">Turmas ofertadas</a>
+                        <a role="menuitem" tabindex="-1" href="./Disciplinas/index.html">Turmas ofertadas</a>
                     </li>
                 </ul>
             </li>
@@ -47,7 +48,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="./index.html">Sair</a></li>
+            <li><a onclick="signOut()">Sair</a></li>
         </ul>
     </div>
 
@@ -80,6 +81,6 @@
         </div>
 
     </div>
-    <script src="/Scripts/client.js"></script>
+    
 </body>
 </html>
