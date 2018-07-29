@@ -5,13 +5,15 @@
     <meta charset="utf-8" />
     <title>Área do Coordenador</title>
     <link rel="shortcut icon" type="image/x-icon" href="/Imagens/ufcg.png">
-    <link type="text/css" href="Styles/style.css" rel="stylesheet">
+    <link type="text/css" href="/Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
     <script src="/Scripts/jquery.min.js"></script>
     <script src="/Scripts/login.js"></script>
+    <script src="/Scripts/client.js"></script>
+    <script src="/Scripts/jq.js"></script>
 
 </head>
 
@@ -23,7 +25,7 @@
             </div>
             <div class="col-sm-8 col-xs-8">
                 <h1>
-                    <a href="/">Sistema de Pré-Matricula Online</a>
+                    <a href="/Coordenador/">Sistema de Pré-Matricula Online</a>
                 </h1>
             </div>
         </div>
@@ -36,10 +38,10 @@
                 <a id="coordMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="coordMatriculas">
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="Cadastro/">Cadastro de Disciplina</a>
+                        <a role="menuitem" tabindex="-1" href="./">Cadastro de Disciplina</a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Disciplinas/index2.html">Listagem de Pré-Matriculas</a>
+                        <a role="menuitem" tabindex="-1" href="/Coordenador/Turmas/">Listagem de Pré-Matriculas</a>
                     </li>
                 </ul>
             </li>
@@ -51,7 +53,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="./index.html" data-onsuccess="signOut">Sair</a></li>
+            <li><a href="/" data-onsuccess="signOut">Sair</a></li>
         </ul>
     </div>
 
@@ -75,14 +77,13 @@
                 <input class="form-control" type="number" min="0" id="carga" v-model="carga">
             </p>
                 <input type="radio" name="grade" id="old_grade" value="old_grade" v-model="grade">Grade Antiga
-                    </br>
+                    
                 <input type="radio" name="grade" id="new_grade" value="new_grade" v-model="grade">Grade Nova
-                    </br>
+                    
 
                 <button class="btn btn-primary" type="submit" id="cadastrar_disc" disabled>OK</button>
             </form>
     </div>
-    <script src="/Scripts/client.js"></script>
-    <script src="/Scripts/jq.js"></script>
+
 </body>
 </html>
