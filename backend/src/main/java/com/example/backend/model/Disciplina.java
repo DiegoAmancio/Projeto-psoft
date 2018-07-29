@@ -33,8 +33,6 @@ public class Disciplina implements Serializable{
 	@Column(nullable = false)
 	private String grade;
 	
-	@Column(nullable = false)
-	private int numeroCadastrados;
 	
 	
 	public Disciplina(String nomeDisciplina, int cargaHoraria,String grade) {
@@ -43,10 +41,7 @@ public class Disciplina implements Serializable{
 		this.cargaHoraria = cargaHoraria;
 		this.creditos = cargaHoraria / 4 ;
 		this.grade = grade;
-		this.numeroCadastrados = 0;
-	}
-	public void maisUmAluno() {
-		this.numeroCadastrados += 1;
+		
 	}
 	public int getIdDisciplina() {
 		return idDisciplina;
@@ -88,13 +83,6 @@ public class Disciplina implements Serializable{
 		this.grade = gradeNova;
 	}
 
-	public int getNumeroCadastrados() {
-		return numeroCadastrados;
-	}
-
-	public void setNumeroCadastrados(int numeroCadastrados) {
-		this.numeroCadastrados = numeroCadastrados;
-	}
 	
 }	
 	

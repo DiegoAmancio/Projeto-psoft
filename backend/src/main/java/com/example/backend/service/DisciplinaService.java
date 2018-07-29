@@ -26,15 +26,12 @@ public class DisciplinaService  {
 		
 		throw new Excecoes("disciplina já cadastrada");
 	}
-	/**
-	 * Aumenta o número de alunos interessados na disciplina em 1
-	 * @param nomeDisciplina
-	 */
+	
 	public void incrementaDisciplina(String nomeDisciplina,String grade) {
 		Optional<Disciplina> disciplina = disciplinas.findDisciplinaByName(nomeDisciplina,grade);
 		
 		if(disciplina.isPresent()) {
-			disciplina.get().maisUmAluno();
+			disciplina.get();
 		}
 		
 		throw new Excecoes("disciplina não cadastrada");

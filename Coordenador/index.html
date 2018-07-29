@@ -5,22 +5,22 @@
     <meta charset="utf-8" />
     <title>Área do Coordenador</title>
     <link rel="shortcut icon" type="image/x-icon" href="/Imagens/ufcg.png">
-    <link type="text/css" href="Styles/style.css" rel="stylesheet">
+    <link type="text/css" href="/Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="/Scripts/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/Scripts/vue.js"></script>
 </head>
 
 <body>
     <div class="container panel panel-primary text-center" id="header" role="banner">
         <div class="row">
             <div class="col-sm-2 col-xs-3">
-                <img class="brasao" src="Imagens/ufcg.png" alt="Universidade Federal de Campina Grande">
+                <img class="brasao" src="/Imagens/ufcg.png" alt="Universidade Federal de Campina Grande">
             </div>
             <div class="col-sm-8 col-xs-8">
                 <h1>
-                    <a href="/index.html">Sistema de Pré-Matricula Online</a>
+                    <a href="/">Sistema de Pré-Matricula Online</a>
                 </h1>
             </div>
         </div>
@@ -29,18 +29,15 @@
 
     <div class="container panel panel-primary hidden-print" id="menu" role="navigation">
         <ul class="nav nav-pills">
-            <li><a href="/index.html"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
             <li class="dropdown">
                 <a id="coordMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="coordMatriculas">
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Coordenador_Cadastro/index.html">Cadastro de Disciplina</a>
+                        <a role="menuitem" tabindex="-1" href="Cadastro/">Cadastro de Disciplina</a>
                     </li>
                     <li role="presentation">
-                        <a tabindex="-1" href="/Coordenador_Delete/index">Descadastro de Disciplina</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Coordenador_Turmas/index.html">Listagem de Pré-Matriculas</a>
+                        <a role="menuitem" tabindex="-1" href="Turmas/index.html">Listagem de Pré-Matriculas</a>
                     </li>
                 </ul>
             </li>
@@ -52,9 +49,8 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="./index.html">Sair</a></li>
+            <li><a href="/" data-onsuccess="signOut">Sair</a></li>
         </ul>
     </div>
-    <script src="/Scripts/client.js"></script>
 </body>
 </html>

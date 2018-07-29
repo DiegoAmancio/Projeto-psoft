@@ -9,7 +9,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Aluno")
 public class Aluno implements Serializable{
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Column(nullable = false)
+	private String matricula;
+	
+	@Column(nullable = false)
+	private String periodo;
 	public String getMatricula() {
 		return matricula;
 	}
@@ -30,15 +39,6 @@ public class Aluno implements Serializable{
 		return serialVersionUID;
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
-	@Column(nullable = false)
-	private String matricula;
-	
-	@Column(nullable = false)
-	private String periodo;
 
 }
