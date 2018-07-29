@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
+    <script src="/Scripts/client.js"></script>
+    <script src="/Scripts/login.js"></script>
 </head>
 
 <body>
@@ -34,13 +36,10 @@
                 <a id="coordMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="coordMatriculas">
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Coordenador_Cadastro/index.html">Cadastro de Disciplina</a>
+                        <a role="menuitem" tabindex="-1" href="Cadastro/">Cadastro de Disciplina</a>
                     </li>
                     <li role="presentation">
-                        <a tabindex="-1" href="/Coordenador_Delete/index">Descadastro de Disciplina</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Coordenador_Turmas/index.html">Listagem de Pré-Matriculas</a>
+                        <a role="menuitem" tabindex="-1" href="/Disciplinas/index2.html">Listagem de Pré-Matriculas</a>
                     </li>
                 </ul>
             </li>
@@ -52,9 +51,8 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="/">Sair</a></li>
+            <li><a href="./index.html" data-onsuccess="signOut">Sair</a></li>
         </ul>
     </div>
-    <script src="/Scripts/client.js"></script>
 </body>
 </html>
