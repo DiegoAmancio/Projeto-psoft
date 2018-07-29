@@ -11,6 +11,8 @@
     <script src="/Scripts/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
 </head>
 
 <body>
@@ -61,26 +63,31 @@
 
             </label>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">
-              Codigo de Disciplina - Disciplina
-            </label>
-            <div class="col-sm-6">
-                <input class="form-control" type="text" id="disc_nome" v-model="disc_nome" placeholder="Codigo - Disciplina">
+        <form id="disciplinas" class="form-group" @submit="validaCreditos">
+            <div v-for="disc in disciplinas" :key="disc.codigo">
+                <input type="checkbox" v-model="selecionadas" :value="disc"/>
+                <label>{{disc.nome}}</label>
             </div>
-        </div>
-        <div>
-            <label>
+              
+              <p>Disciplinas selecionadas: </p>
 
-            </label>
-        </div>
+              <div v-for="disc in selecionadas" :key="disc.codigo">
+                    <ul>  <li>{{disc.nome}}</li>            </ul>
+            </div>
+
+              
+            {{selecionadas}} (Isso ta aqui pra testes)
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-10">
                 <button class="btn btn-primary" type="submit" id="salvar">OK</button>
             </div>
         </div>
+    </form>
 
     </div>
     
+
+    <script src="/Scripts/disciplinas.js">
+    </script>
 </body>
 </html>
