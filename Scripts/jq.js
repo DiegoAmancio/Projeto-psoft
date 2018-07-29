@@ -13,7 +13,7 @@ $(document).ready(function(){
         codigo = document.getElementById('codigo').value;
         creditos = document.getElementById('creditos').value;
         carga = document.getElementById('carga').value;
-        if(grade == 'old_grade' || grade == 'new_grade' || nome == "" || codigo == "" || creditos == "" || carga == ""){
+        if(grade == "Antiga" || grade == "Nova" || grade == "Ambas" || nome == "" || codigo == "" || creditos == "" || carga == ""){
             document.getElementById('cadastrar_disc').removeAttribute('disabled');
         }
         else{

@@ -8,13 +8,11 @@
     <link type="text/css" href="/Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="/Scripts/vue.js"></script>
     <script src="/Scripts/jquery.min.js"></script>
-    <script src="/Scripts/login.js"></script>
-    <script src="/Scripts/client.js"></script>
-    <script src="/Scripts/jq.js"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -38,7 +36,7 @@
                 <a id="coordMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="coordMatriculas">
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="./">Cadastro de Disciplina</a>
+                        <a role="menuitem" tabindex="-1" href=".">Cadastro de Disciplina</a>
                     </li>
                     <li role="presentation">
                         <a role="menuitem" tabindex="-1" href="/Coordenador/Turmas/">Listagem de Pré-Matriculas</a>
@@ -70,20 +68,21 @@
                 Código da Disciplina <input class="form-control" type="text" id="codigo" v-model="codigo">
             </p>
             <p>
-                N° de Créditos <input class="form-control" type="number" min="0" id="creditos" onchange="atualizacarga()" v-model="creditos">
+                N° de Créditos <input class="form-control" type="number" min="0" id="creditos" @change="atualizacarga" v-model="creditos">
             </p>
             <p>
                 Carga Horária
                 <input class="form-control" type="number" min="0" id="carga" v-model="carga">
             </p>
-                <input type="radio" name="grade" id="old_grade" value="old_grade" v-model="grade">Grade Antiga
+                <input type="radio" name="grade" id="old_grade" value="Antiga" v-model="grade">Grade Antiga </br>
                     
-                <input type="radio" name="grade" id="new_grade" value="new_grade" v-model="grade">Grade Nova
+                <input type="radio" name="grade" id="new_grade" value="Nova" v-model="grade">Grade Nova </br>
                     
+                <input type="radio" name="grade" id="both_grade" value="Ambas" v-model="grade">Ambas </br>
 
                 <button class="btn btn-primary" type="submit" id="cadastrar_disc" disabled>OK</button>
             </form>
     </div>
-
+    <script src="/Scripts/disciplinas.js"></script>
 </body>
 </html>
