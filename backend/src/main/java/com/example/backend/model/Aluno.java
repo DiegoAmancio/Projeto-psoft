@@ -10,6 +10,26 @@ import javax.persistence.Table;
 @Table(name = "Aluno")
 public class Aluno implements Serializable{
 
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	/**
 	 * 
 	 */
