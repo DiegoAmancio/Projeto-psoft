@@ -5,10 +5,10 @@ function OpenWindow() {
     choice = choice.comando.value;
 
     if (choice == 'AlunoLogin') {
-        window.open('/Aluno');
+        window.location ='/Aluno';
     }
     else if (choice == 'CoordenacaoLogin') {
-        window.open('/Coordenador');
+        window.location ='/Coordenador';
     }
 }
 
