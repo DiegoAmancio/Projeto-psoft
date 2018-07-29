@@ -1,11 +1,11 @@
 package com.example.backend.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,37 +18,45 @@ public class Disciplina implements Serializable{
 	private static final long serialVersionUID = -6497987270939165315L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idDisciplina;
+	@Column(nullable = false)
+	private int codigoDisciplina;
 	
 	@Column(nullable = false)
 	private String nomeDisciplina;
 	
-	@Column(nullable = false)
-	private int cargaHoraria;
+	@Column
+	private String semestre;
 	
 	@Column(nullable = false)
+	private int horas;
+	
+	@Column
 	private int creditos;
+	
+	@Column(nullable = false)
+	private String tipo;
 	
 	@Column(nullable = false)
 	private String grade;
 	
+	private List<Integer> preRequisitos;
 	
-	
-	public Disciplina(String nomeDisciplina, int cargaHoraria,String grade) {
+	public Disciplina(String nomeDisciplina,int creditos, int cargaHoraria,String grade,ArrayList<Integer> lista) {
 		
 		this.nomeDisciplina = nomeDisciplina;
-		this.cargaHoraria = cargaHoraria;
-		this.creditos = cargaHoraria / 4 ;
+		this.horas = cargaHoraria;
+		this.creditos = creditos;
 		this.grade = grade;
+		this.preRequisitos = lista;
 		
 	}
-	public int getIdDisciplina() {
-		return idDisciplina;
+
+	public int getCodigoDisciplina() {
+		return codigoDisciplina;
 	}
-	
-	public void setIdDisciplina(int idDisciplina) {
-		this.idDisciplina = idDisciplina;
+
+	public void setCodigoDisciplina(int codigoDisciplina) {
+		this.codigoDisciplina = codigoDisciplina;
 	}
 
 	public String getNomeDisciplina() {
@@ -59,12 +67,20 @@ public class Disciplina implements Serializable{
 		this.nomeDisciplina = nomeDisciplina;
 	}
 
-	public int getCargaHoraria() {
-		return cargaHoraria;
+	public String getSemestre() {
+		return semestre;
 	}
 
-	public void setCargaHoraria(int cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
+
+	public int getHoras() {
+		return horas;
+	}
+
+	public void setHoras(int horas) {
+		this.horas = horas;
 	}
 
 	public int getCreditos() {
@@ -79,10 +95,24 @@ public class Disciplina implements Serializable{
 		return grade;
 	}
 
-	public void setGrade(String gradeNova) {
-		this.grade = gradeNova;
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
+	public List<Integer> getPreRequisitos() {
+		return preRequisitos;
+	}
+
+	public void setPreRequisitos(List<Integer> preRequisitos) {
+		this.preRequisitos = preRequisitos;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+	
 	
 }	
 	
