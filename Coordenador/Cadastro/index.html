@@ -8,7 +8,7 @@
     <link type="text/css" href="/Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script src="/Scripts/vue.js"></script>
     <script src="/Scripts/jquery.min.js"></script>
 
@@ -51,7 +51,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="/" data-onsuccess="signOut">Sair</a></li>
+            <li><a onclick="signOut();" href='/'>Sair</a></li>
         </ul>
     </div>
 
@@ -59,7 +59,6 @@
         <div>
             <h2 class="text-center">Cadastro de Disciplina</h2>
         </div>
-
 
         <form id="cadastro_disc" class="form-horizontal" onsubmit="valida_cadastro_disciplina()">
             <div class="form-group">
@@ -114,8 +113,20 @@
             </div>
             
         </form>
-
     </div>
+     <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                    function onLoad() {
+                        gapi.load('auth2', function() {
+                            gapi.auth2.init();
+                        });
+                        }
+    </script>
     <script src="/Scripts/disciplinas.js"></script>
 </body>
 </html>

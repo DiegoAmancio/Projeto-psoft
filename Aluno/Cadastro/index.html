@@ -3,6 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="415663373552-3foebghlgeuglmmaan8p0j0id0oi6vlq.apps.googleusercontent.com">
     <title>Área do Aluno</title>
     <link rel="shortcut icon" type="image/x-icon" href="/Imagens/ufcg.png">
     <link type="text/css" href="/Styles/style.css" rel="stylesheet">
@@ -12,6 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    
 
 </head>
 
@@ -52,14 +55,6 @@
             </li>
             <li>
                 <a onclick="signOut();" href='/'>Sair</a>
-                <script>
-                    function signOut() {
-                        var auth2 = gapi.auth2.getAuthInstance();
-                        auth2.signOut().then(function () {
-                            console.log('User signed out.');
-                        });
-                    }
-                </script>
             </li>
         </ul>
     </div>
@@ -115,23 +110,29 @@
                 <ul>  <li>{{disc.nome}}</li>            </ul>
             </div>
 
+
             {{selecionadas}} (Isso ta aqui pra testes)
 
             <div class="form-group">
-
                 <button class="btn btn-primary" type="submit" id="salvar">OK</button>
             </div>
         </form>
-
-
-
-
     </div>
     
-
-
+    <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                    function onLoad() {
+                        gapi.load('auth2', function() {
+                            gapi.auth2.init();
+                        });
+                        }
+    </script>
     <script src="/Scripts/disciplinas.js">
     </script>
-
 </body>
 </html>

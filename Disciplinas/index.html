@@ -7,7 +7,7 @@
     <link type="text/css" href="/Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script src="/Scripts/vue.js"></script>
     <script src="/Scripts/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -28,16 +28,12 @@
     </div>
     <div class="container panel panel-primary hidden-print" id="menu" role="navigation">
         <ul class="nav nav-pills">
-
             <li><a href="/Aluno/"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
-
             <li class="dropdown">
                 <a id="alunoMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="alunoMatriculas">
                     <li role="presentation">
-
                         <a role="menuitem" tabindex="-1" href="/Aluno/Cadastro/">Realizar Pré-Matricula</a>
-
                     </li>
                     <li role="presentation">
                         <a role="menuitem" tabindex="-1" href=".">Turmas ofertadas</a>
@@ -52,7 +48,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="/" data-onsuccess="signOut">Sair</a></li>
+            <li><a onclick="signOut();" href='/'>Sair</a></li>
         </ul>
     </div>
 
@@ -72,10 +68,8 @@
             </script>
         </div><h2>Disciplinas Ofertadas</h2>
         <div class="row">
-
             <div class="col-sm-2 col-xs-1 text-right"><b>Curso: </b> </div>
             <div class="col-sm-4">14102100 - CIÊNCIA DA COMPUTAÇÃO - D</div>
-
         </div>
         <hr>
         <div id="disciplinas" class="table-responsive">
@@ -112,6 +106,19 @@
             </table>
         </div>
     </div>
+     <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                    function onLoad() {
+                        gapi.load('auth2', function() {
+                            gapi.auth2.init();
+                        });
+                        }
+    </script>
     <script src="/Scripts/disciplinas.js"></script>
 </body>
 

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="/Scripts/jquery.min.js"></script>
-
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
 </head>
@@ -51,7 +51,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="/" data-onsuccess="signOut">Sair</a></li>
+            <li><a onclick="signOut();" href='/'>Sair</a></li>
         </ul>
     </div>
 
@@ -69,7 +69,7 @@
                     });
                 });
             </script>
-        </div><h2>Disciplinas Ofertadas</h2>
+        </div><h2>Pré-Matriculas realizadas</h2>
         <div class="row">
             <div class="col-sm-2 col-xs-4"><b>Curso:</b></div>
             <div class="col-sm-4 col-xs-10">14102100 - CIÊNCIA DA COMPUTAÇÃO - D</div>
@@ -95,7 +95,7 @@
                             Zezinho23
                         </td>
                         <td>
-                            zezinho@ccc.ufcg.edu.br
+                            arifdpdocarai@ccc.ufcg.edu.br
                         </td>
                         <td class="text-center">
                             2017.1
@@ -114,5 +114,18 @@
             </table>
         </div>
     </div>
+     <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                    function onLoad() {
+                        gapi.load('auth2', function() {
+                            gapi.auth2.init();
+                        });
+                        }
+    </script>
 </body>
 </html>
