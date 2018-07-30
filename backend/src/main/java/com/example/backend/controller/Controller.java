@@ -1,4 +1,6 @@
 package com.example.backend.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,18 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.backend.model.Aluno;
 import com.example.backend.model.Disciplina;
+import com.example.backend.service.AlunoService;
 
 import br.com.ufcg.springboot.service.DisciplinaService;
 
 
 @RestController
-@RequestMappinng(value = "/api")
+@RequestMapping(value = "/api")
 @CrossOrigin(origins = "*")
 
 public class Controller {
-	@Autowired
+	
 	DisciplinaService disciplinaService;
+	AlunoService alunoService;
+	@RequestMapping(value = "/Aluno", method = RequestMethod.GET)
+	public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
+		return alunoService.cadastrarAluno(aluno);
+	}
 	/**
 	 * METODO GET DE DISCIPLINA
 	 */
@@ -33,7 +42,7 @@ public class Controller {
 	 */
 	@RequestMapping(value = "/service", method = RequestMethod.POST)
 	public Disciplina save(@RequestBody Disciplina disciplina) {
-		return disciplinaService.cadastardisciplina(disciplina.getNomeDisciplina(), disciplina.getCargaHoraria(), disciplina.getGrade());
+		return disciplinaService.cadastardisciplina(disciplina);
 	}
 	/**
 	 * METODO POST DE DISCIPLINA PELO ID
@@ -63,13 +72,6 @@ public class Controller {
 	public List<Disciplina> searchByText(@PathVariable("text") String text) {
 		return disciplinaService.searchByText(text);
 	}
-	/**
-	 * METODO de ICREMENTAR O NÚMERO DE SOLICITAÇÕES PRA CAADEIRA DE ACORDO COM O ID
-	 */
-	@RequestMapping(value = "/service/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Disciplina> update(@PathVariable("id") Long id, @RequestBody Disciplina disciplina) {
-		Disciplina disciplina  = disciplinaService.icrementaDisciplina(disciplina.getNomeDisciplina(),disciplina.getGrade());
-		return new ResponseEntity<Disciplina>(disciplina, HttpStatus.OK);
-	}
+	
 }
 

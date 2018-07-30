@@ -16,5 +16,5 @@ import com.example.backend.model.Disciplina;
 public interface DisciplinasRepositorio extends JpaRepository<Disciplina,Long> {
 
 	@Query("SELECT * FROM Disciplina AS D WHERE nome = D.nomeDisciplina and grade = D.grade")
-	public  Optional<Disciplina> findDisciplinaByName(@Param("nome") String nome,@Param("grade") String grade);
+	public  Optional<Disciplina> findDisciplinaById(@Param("nome") String nome,@Param("grade") String grade);
 }

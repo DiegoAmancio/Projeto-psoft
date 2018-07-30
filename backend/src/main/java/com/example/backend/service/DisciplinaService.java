@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.backend.excecoes.Excecoes;
 import com.example.backend.model.Disciplina;
 import com.example.backend.repository.DisciplinasRepositorio;
 
@@ -15,25 +13,14 @@ public class DisciplinaService  {
 	private DisciplinasRepositorio disciplinas;
 	
 	
-	public Disciplina cadastrarDisciplina(String nomeDisciplina, int cargaHoraria,String grade) {
-		Optional<Disciplina> disciplina = disciplinas.findDisciplinaByName(nomeDisciplina,grade);
+	public void cadastrarDisciplina(Disciplina novaDisciplina) {
+		Optional<Disciplina> disciplina = disciplinas.findById((long) novaDisciplina.getCodigoDisciplina());
 		
 		if(!disciplina.isPresent()) {
-			Disciplina novaDisciplina = new Disciplina(nomeDisciplina, cargaHoraria, grade);
 			disciplinas.save(novaDisciplina);
-			return disciplina.get();
+			
 		}
 		
-		throw new Excecoes("disciplina já cadastrada");
 	}
 	
-	public void incrementaDisciplina(String nomeDisciplina,String grade) {
-		Optional<Disciplina> disciplina = disciplinas.findDisciplinaByName(nomeDisciplina,grade);
-		
-		if(disciplina.isPresent()) {
-			disciplina.get();
-		}
-		
-		throw new Excecoes("disciplina não cadastrada");
-	}
 }

@@ -39,18 +39,46 @@ public class Disciplina implements Serializable{
 	@Column(nullable = false)
 	private String grade;
 	
-	private List<Integer> preRequisitos;
 	
-	public Disciplina(String nomeDisciplina,int creditos, int cargaHoraria,String grade,ArrayList<Integer> lista) {
+	
+	public Disciplina(String nomeDisciplina,int creditos, int cargaHoraria,String grade) {
 		
 		this.nomeDisciplina = nomeDisciplina;
 		this.horas = cargaHoraria;
 		this.creditos = creditos;
 		this.grade = grade;
-		this.preRequisitos = lista;
+		
+		
 		
 	}
+	public String getTipo() {
+		return tipo;
+	}
 
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + codigoDisciplina;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Disciplina other = (Disciplina) obj;
+		if (codigoDisciplina != other.codigoDisciplina)
+			return false;
+		return true;
+	}
 	public int getCodigoDisciplina() {
 		return codigoDisciplina;
 	}
@@ -99,13 +127,7 @@ public class Disciplina implements Serializable{
 		this.grade = grade;
 	}
 
-	public List<Integer> getPreRequisitos() {
-		return preRequisitos;
-	}
-
-	public void setPreRequisitos(List<Integer> preRequisitos) {
-		this.preRequisitos = preRequisitos;
-	}
+	
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
