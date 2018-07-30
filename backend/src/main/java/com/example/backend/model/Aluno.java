@@ -23,7 +23,7 @@ public class Aluno implements Serializable{
 	@Column(nullable = false)
 	private String periodo;
 	
-	private Set<Disciplina> cadeirasDesejadas;
+//	private Set<Disciplina> cadeirasDesejadas;
 	
 	@Column(nullable = false)
 	private String grade;
@@ -32,14 +32,14 @@ public class Aluno implements Serializable{
 		this.grade = grade;
 		this.matricula = matricula;
 		this.periodo = periodo;
-		this.cadeirasDesejadas = new HashSet<>();
+//		this.cadeirasDesejadas = new HashSet<>();
 	}
 	
-	public void addCadeira(Disciplina disciplina) {
-		if(!cadeirasDesejadas.contains(disciplina)) {
-			cadeirasDesejadas.add(disciplina);
-		}
-	}
+//	public void addCadeira(Disciplina disciplina) {
+//		if(!cadeirasDesejadas.contains(disciplina)) {
+//			cadeirasDesejadas.add(disciplina);
+//		}
+//	}
 
 
 
@@ -59,13 +59,13 @@ public class Aluno implements Serializable{
 		this.periodo = periodo;
 	}
 
-	public Set<Disciplina> getCadeirasDesejadas() {
-		return cadeirasDesejadas;
-	}
-
-	public void setCadeirasDesejadas(Set<Disciplina> cadeirasDesejadas) {
-		this.cadeirasDesejadas = cadeirasDesejadas;
-	}
+//	public Set<Disciplina> getCadeirasDesejadas() {
+//		return cadeirasDesejadas;
+//	}
+//
+//	public void setCadeirasDesejadas(Set<Disciplina> cadeirasDesejadas) {
+//		this.cadeirasDesejadas = cadeirasDesejadas;
+//	}
 
 	public String getGrade() {
 		return grade;

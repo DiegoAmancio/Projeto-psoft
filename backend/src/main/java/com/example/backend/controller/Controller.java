@@ -1,7 +1,6 @@
 package com.example.backend.controller;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +14,7 @@ import com.example.backend.model.Aluno;
 import com.example.backend.model.Disciplina;
 import com.example.backend.service.AlunoService;
 
-import br.com.ufcg.springboot.service.DisciplinaService;
+import com.example.backend.service.DisciplinaService;
 
 
 @RestController
@@ -42,7 +41,7 @@ public class Controller {
 	 */
 	@RequestMapping(value = "/service", method = RequestMethod.POST)
 	public Disciplina save(@RequestBody Disciplina disciplina) {
-		return disciplinaService.cadastardisciplina(disciplina);
+		return disciplinaService.cadastrarDisciplina(disciplina);
 	}
 	/**
 	 * METODO POST DE DISCIPLINA PELO ID
@@ -56,22 +55,23 @@ public class Controller {
 	 */
 	@RequestMapping(value = "/service/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Disciplina> update(@PathVariable("id") Long id, @RequestBody Disciplina disciplina) {
-		Disciplina disciplina  = disciplinaService.update(disciplina, id);
-		return new ResponseEntity<Disciplina>(disciplina, HttpStatus.OK);
+		Disciplina disciplinaAtt  = disciplinaService.update(disciplina, id);
+		if(disciplinaAtt != null)return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.OK);
+		return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.EXPECTATION_FAILED);
 	}
-	/**
-	 * METODO DELETE DE DISCIPLINA PELO ID
-	 */
-	@RequestMapping(value = "/service/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Disciplina> delete(@PathVariable("id") Long id) {
-		Disciplina disciplina = disciplinaService.delete(id);
-		return new ResponseEntity<Disciplina>(disciplina, HttpStatus.OK);
-	}
-	
-	@RequestMapping(value = "/service/search/{text}", method = RequestMethod.GET)
-	public List<Disciplina> searchByText(@PathVariable("text") String text) {
-		return disciplinaService.searchByText(text);
-	}
-	
+//	/**
+//	 * METODO DELETE DE DISCIPLINA PELO ID
+//	 */
+//	@RequestMapping(value = "/service/{id}", method = RequestMethod.DELETE)
+//	public ResponseEntity<Disciplina> delete(@PathVariable("id") Long id) {
+//		Disciplina disciplina = disciplinaService.deleteById(id);
+//		return new ResponseEntity<Disciplina>(disciplina, HttpStatus.OK);
+//	}
+//	
+//	@RequestMapping(value = "/service/search/{text}", method = RequestMethod.GET)
+//	public List<Disciplina> searchByText(@PathVariable("text") String text) {
+//		return disciplinaService.searchByText(text);
+//	}
+//	
 }
 
