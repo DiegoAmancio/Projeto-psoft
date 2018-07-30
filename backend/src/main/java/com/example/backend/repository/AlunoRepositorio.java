@@ -14,9 +14,9 @@ import com.example.backend.model.Aluno;
 @Repository
 @Transactional
 public interface AlunoRepositorio  extends JpaRepository<Aluno,Long>{
-	@Query("SELECT * FROM Aluno WHERE text = matricula")
+	@Query("SELECT matricula FROM Aluno WHERE text = matricula")
 	public Aluno findAlunoByMatricula(@Param("text") String text);
 	
-	@Query("SELECT * FROM Aluno")
+	@Query("SELECT matricula FROM Aluno")
 	public List<Aluno> findAlunos();
 }
