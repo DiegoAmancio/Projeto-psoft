@@ -63,26 +63,63 @@
 
             </label>
         </div>
+        <div id="disciplinas" class="table-responsive">
+            <table class="table table-striped table-hover table-condensed" id="tabOferta">
+                <thead>
+                    <tr>
+                        <th class="text-center">Período</th>
+                        <th class="text-center">Código</th>
+                        <th class="text-center">Disciplina</th>
+                        <th class="text-center">Créditos(Carga horária)</th>
+                        <th class="text-center">Tipo de Grade</th>
+                        <th class="text-center">Selecione </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="disc in disciplinas">
+                        <td class="text-center">
+                            1
+                        </td>
+                        <td class="text-center">
+                            {{disc.codigo}}
+                        </td>
+                        <td class="text-center">
+                            {{disc.nome}}
+                        </td>
+                        <td class="text-center">
+                            {{disc.creditos}} ({{disc.carga}})<br>
+                        </td>
+                        <td class="text-center">
+                            {{disc.grade}}
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" v-model="selecionadas" :value="disc" />
+                        </td>
+                    </tr>
+                    <tr>
+                </tbody>
+            </table>
+        </div>
         <form id="disciplinas" class="form-group" @submit="validaCreditos">
             <div v-for="disc in disciplinas" :key="disc.codigo">
-                <input type="checkbox" v-model="selecionadas" :value="disc"/>
+                <input type="checkbox" v-model="selecionadas" :value="disc" />
                 <label>{{disc.nome}}</label>
             </div>
-              
-              <p>Disciplinas selecionadas: </p>
 
-              <div v-for="disc in selecionadas" :key="disc.codigo">
-                    <ul>  <li>{{disc.nome}}</li>            </ul>
+            <p>Disciplinas selecionadas: </p>
+
+            <div v-for="disc in selecionadas" :key="disc.codigo">
+                <ul>  <li>{{disc.nome}}</li>            </ul>
             </div>
 
-              
+
             {{selecionadas}} (Isso ta aqui pra testes)
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-10">
-                <button class="btn btn-primary" type="submit" id="salvar">OK</button>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-10">
+                    <button class="btn btn-primary" type="submit" id="salvar">OK</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
 
     </div>
     
