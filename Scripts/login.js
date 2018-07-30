@@ -6,9 +6,7 @@ Vue.use(GoogleAuth, { clientID: '415663373552-3foebghlgeuglmmaan8p0j0id0oi6vlq.a
 Vue.googleAuth().load();
 
 
-
 Vue.googleAuth().onSignIn(function (googleUser) {
-
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -17,7 +15,6 @@ Vue.googleAuth().onSignIn(function (googleUser) {
 });
 
 Vue.googleAuth().signOut(function () {
-
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');

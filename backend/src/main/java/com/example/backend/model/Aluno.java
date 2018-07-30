@@ -1,26 +1,22 @@
 package com.example.backend.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Aluno")
 public class Aluno implements Serializable{
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(nullable = false)
-	private Long matricula;
 	
 	@Column(nullable = false)
+
 	private String periodo;
 	
 //	private Set<Disciplina> cadeirasDesejadas;
@@ -83,5 +79,6 @@ public class Aluno implements Serializable{
 	
 
 	
+
 
 }

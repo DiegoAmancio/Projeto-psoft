@@ -1,5 +1,7 @@
 package com.example.backend.controller;
+
 import java.util.List;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.example.backend.model.Aluno;
 import com.example.backend.model.Disciplina;
 import com.example.backend.service.AlunoService;
@@ -17,12 +20,10 @@ import com.example.backend.service.AlunoService;
 import com.example.backend.service.DisciplinaService;
 
 
-@RestController
-@RequestMapping(value = "/api")
-@CrossOrigin(origins = "*")
 
+@RestController
 public class Controller {
-	
+
 	DisciplinaService disciplinaService;
 	AlunoService alunoService;
 	@RequestMapping(value = "/Aluno", method = RequestMethod.GET)
@@ -75,3 +76,5 @@ public class Controller {
 //	
 }
 
+
+}
