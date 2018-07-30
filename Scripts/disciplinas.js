@@ -19,11 +19,30 @@ new Vue({
 disc = new Vue({
     el: '#disciplinas',
     data:{
-        disciplinas:[]
+
+        selecionadas: [],
+        disciplinas:[] //Precisa pegar do banco de dados
+
     },
     methods: {
         getDisc: function(){
             return disciplinas;
+
+        },
+        validaCreditos: function(){
+            that = this;
+            creditos = that.selecionadas.map(e => e.creditos).reduce((e,a) => e+a);
+            if(creditos < 16){
+                alert("Créditos insuficientes, coloque mais disciplinas");
+            }
+            else if(creditos > 24){
+                alert("Créditos excedentes, coloque menos disciplinas");
+            }
+            else{
+                //cadastraPreMatricula();
+                alert("Pré-matricula executada com sucesso");
+            }
+
         }
     }
 })
@@ -69,6 +88,12 @@ function valida_cadastro_disciplina(){
         cadastra_disciplina(nome, codigo, creditos, carga, grade);
         alert('Disciplina cadastrada');
     }
-}
 
-cadastra_disciplina('EDA', '03-02', 4, 60, 'Ambas');
+cadastra_disciplina('OAC', '0401', 4, 60, 'Ambas');
+cadastra_disciplina('LOAC', '0402', 4, 60, 'Ambas');
+cadastra_disciplina('PLP', '0403', 4, 60, 'Ambas');
+cadastra_disciplina('PSoft', '0404', 4, 60, 'Ambas');
+cadastra_disciplina('BD', '0405', 4, 60, 'Ambas');
+cadastra_disciplina('EDA', '0301', 4, 60, 'Ambas');
+cadastra_disciplina('LEDA', '0302', 4, 60, 'Ambas');
+

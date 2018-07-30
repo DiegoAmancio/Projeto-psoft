@@ -11,6 +11,8 @@
     <script src="/Scripts/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/Scripts/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
 </head>
 
 <body>
@@ -61,26 +63,65 @@
 
             </label>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">
-              Codigo de Disciplina - Disciplina
-            </label>
-            <div class="col-sm-6">
-                <input class="form-control" type="text" id="disc_nome" v-model="disc_nome" placeholder="Codigo - Disciplina">
-            </div>
-        </div>
-        <div>
-            <label>
+        <form id="disciplinas" class="table-responsive" @submit="validaCreditos">
+            <table class="table table-striped table-hover table-condensed" id="tabOferta">
+                <thead>
+                    <tr>
+                        <th class="text-center">Período</th>
+                        <th class="text-center">Código</th>
+                        <th class="text-center">Disciplina</th>
+                        <th class="text-center">Créditos(Carga horária)</th>
+                        <th class="text-center">Tipo de Grade</th>
+                        <th class="text-center">Interesse </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="disc in disciplinas">
+                        <td class="text-center">
+                            1
+                        </td>
+                        <td class="text-center">
+                            {{disc.codigo}}
+                        </td>
+                        <td class="text-center">
+                            {{disc.nome}}
+                        </td>
+                        <td class="text-center">
+                            {{disc.creditos}} ({{disc.carga}})<br>
+                        </td>
+                        <td class="text-center">
+                            {{disc.grade}}
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" v-model="selecionadas" :value="disc" />
+                        </td>
+                    </tr>
+                    <tr>
+                </tbody>
+            </table>
+            <p>Disciplinas selecionadas: </p>
 
-            </label>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-10">
+            <div v-for="disc in selecionadas" :key="disc.codigo">
+                <ul>  <li>{{disc.nome}}</li>            </ul>
+            </div>
+
+            {{selecionadas}} (Isso ta aqui pra testes)
+
+            <div class="form-group">
+
                 <button class="btn btn-primary" type="submit" id="salvar">OK</button>
             </div>
-        </div>
+        </form>
+
+
+
 
     </div>
     
+
+
+    <script src="/Scripts/disciplinas.js">
+    </script>
+
 </body>
 </html>

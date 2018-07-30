@@ -13,6 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="/Scripts/load.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
 </head>
 
 <body>
@@ -36,11 +39,7 @@
             <h3 class="text-right">Olá! Faça login preenchendo o formulario e seguindo o icone abaixo!</h3>
         </div>
 
-        <div class="col-sm-1 col-xs-5">
-            <div class="g-signin2" data-onsuccess="OnSignIn"></div>
-        </div>
 
-   
         <form id="form" class="form-horizontal" role="form" name="login_form" method="post" action="javascript:OpenWindow()">
             <div class="form-group">
                 <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
@@ -64,7 +63,30 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-10">
+
+                        <div id="my-signin2" class="col-sm-12"></div>
+                        <script>
+                            function onSuccess(googleUser) {
+                                console.log('Logged in as: ' + googleUser.getBasicProfile().getEmail());
+                            }
+                            function onFailure(error) {
+                                console.log(error);
+                            }
+                            function renderButton() {
+                                gapi.signin2.render('my-signin2', {
+                                    'scope': 'profile email',
+                                    'width': 230,
+                                    'height': 40,
+                                    'longtitle': true,
+                                    'theme': 'dark',
+                                    'onsuccess': onSuccess,
+                                    'onfailure': onFailure
+                                });
+                            }
+                        </script>
+                        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+                        <div class="col-sm-12 col-sm-5">
+
                             <button class="btn btn-primary" type="submit" id="salvar" able>OK</button>
                         </div>
                     </div>
@@ -72,9 +94,9 @@
             </div>
         </form>
 
-        
     </div>
 
 </body>
-</html >
+</html>
+
 
