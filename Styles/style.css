@@ -26,6 +26,15 @@ div.form-group{
     }
 
 }
+
+.botaoEditar{
+    background-color: #00aaff;
+}
+
+.botaoApagar{
+    background-color: #ff4400;
+}
+
 a[href]:after{
     content:none!important
 
