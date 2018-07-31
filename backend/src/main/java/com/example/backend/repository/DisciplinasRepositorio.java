@@ -1,8 +1,6 @@
 package com.example.backend.repository;
 
 import java.util.List;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,12 +11,9 @@ import com.example.backend.model.Disciplina;
 
 @Repository
 @Transactional
-public interface DisciplinasRepositorio extends JpaRepository<Disciplina,Integer> {
+public interface DisciplinasRepositorio extends JpaRepository<Disciplina, Integer> {
 
 	@Query("SELECT codigo_disciplina,disciplina FROM Disciplina")
-	public  List<Disciplina> getAll();
-	
-	
-	
-	
+	public List<Disciplina> getAll();
+
 }
