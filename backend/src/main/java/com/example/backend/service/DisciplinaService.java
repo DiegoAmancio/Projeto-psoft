@@ -25,13 +25,9 @@ public class DisciplinaService  {
 		
 	}
 
-
-	public List<Disciplina> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Disciplina> disciplinasCadastradas(){
+		return disciplinas.getAll();
 	}
-
-
 
 	public Disciplina update(Disciplina novaDisciplina) {
 		Optional<Disciplina> disciplinaNoBd = disciplinas.findById((int) novaDisciplina.getCodigo_disciplina());

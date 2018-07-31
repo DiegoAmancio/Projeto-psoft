@@ -23,7 +23,7 @@ public class Disciplina implements Serializable{
 	@Column
 	private double semestre;
 	
-	@Column(nullable = false)
+	@Column
 	private double horas;
 	
 	@Column
@@ -35,8 +35,9 @@ public class Disciplina implements Serializable{
 	@Column(nullable = false)
 	private String grade;
 	
-	
+	public Disciplina() {
 		
+	}
 		
 	public Disciplina(Integer codigo_disciplina, String disciplina, double semestre, double horas, int creditos,
 			String tipo, String grade) {
@@ -50,10 +51,6 @@ public class Disciplina implements Serializable{
 		this.grade = grade;
 	}
 
-
-
-
-	
 	public String getTipo() {
 		return tipo;
 	}

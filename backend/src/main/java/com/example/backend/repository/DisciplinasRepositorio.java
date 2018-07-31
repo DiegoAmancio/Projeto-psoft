@@ -1,5 +1,6 @@
 package com.example.backend.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -15,7 +16,9 @@ import com.example.backend.model.Disciplina;
 public interface DisciplinasRepositorio extends JpaRepository<Disciplina,Integer> {
 
 	@Query("SELECT codigo_disciplina,disciplina FROM Disciplina")
-	public  Optional<Disciplina> getAll();
+	public  List<Disciplina> getAll();
+	
+	
 	
 	
 }

@@ -40,12 +40,9 @@ public class Controller {
 		 return alunoService.cadastrarAluno(aluno);
 		
 	}
-	/**
-	 * METODO GET DE DISCIPLINA
-	 */
-	@RequestMapping(value = "/service", method = RequestMethod.GET)
-	public List<Disciplina> getAll() {
-		return disciplinaService.getAll();
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.GET)
+	public List<Disciplina> listar() {
+		return disciplinaService.disciplinasCadastradas();
 	}
 	/**
 	 * METODO POST DE DISCIPLINA
