@@ -34,12 +34,10 @@
             <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
         </div>
     </div>
-</body>
-
  <script>
                 function onSuccess(googleUser) {
                     if (googleUser.getBasicProfile().getEmail().includes('@ccc.ufcg.edu.br')) {
-                        if (googleUser.getBasicProfile().getEmail().includes('coordenador')) {
+                        if (googleUser.getBasicProfile().getEmail().includes('jose.arruda')) {
                             window.location = '/Coordenador'; 
                         } else {
                             window.location = '/Aluno';
@@ -49,7 +47,7 @@
                     }
                 }
                 function onFailure(error) {
-                    alert(error);
+                    console.log(error);
                 }
                 function renderButton() {
                     gapi.signin2.render('my-signin2', {
@@ -64,5 +62,5 @@
                 }
                 </script>
                 <script src="/Scripts/templates.js"></script>
-        
+</body>        
 </html>
