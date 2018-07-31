@@ -19,46 +19,15 @@
 </head>
 
 <body>
-    <div class="container panel panel-primary text-center" id="header" role="banner">
-        <div class="row">
-            <div class="col-sm-2 col-xs-3">
-                <img class="brasao" src="/Imagens/ufcg.png" alt="Universidade Federal de Campina Grande">
-            </div>
-            <div class="col-sm-8 col-xs-8">
-                <h1>
-                    <a href="/Aluno/">Sistema de Pré-Matricula Online</a>
-                </h1>
-            </div>
-        </div>
-    </div>
-    <div class="container panel panel-primary hidden-print" id="menu" role="navigation">
-        <ul class="nav nav-pills">
-            <li><a href="/"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
-            <li class="dropdown">
-                <a id="alunoMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="alunoMatriculas">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href=".">Realizar Pré-Matricula</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Aluno/Disciplinas/">Turmas ofertadas</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a id="alunoUsuario" role="button" data-toggle="dropdown" href="#">Usuário<b class="caret"></b></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="alunoUsuario">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="https://myaccount.google.com/u/1/signinoptions/password">Alterar senha</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a onclick="signOut();" href='/'>Sair</a>
-            </li>
-        </ul>
-    </div>
 
+    <div id="app">
+        <my-top>
+        </my-top>
+                        
+        <my-navbar-aluno>
+        </my-navbar-aluno>
+    </div>
+    
     <div class="container panel panel-primary" id="content" role="main">
         <div>
             <h2 class="text-center">Realizar Pré-Matricula</h2>
@@ -132,7 +101,7 @@
                         });
                         }
     </script>
-    <script src="/Scripts/disciplinas.js">
-    </script>
+    <script src="/Scripts/disciplinas.js"></script>
+    <script src="/Scripts/templates.js"></script>
 </body>
 </html>
