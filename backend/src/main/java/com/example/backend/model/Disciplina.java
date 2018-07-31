@@ -34,10 +34,11 @@ public class Disciplina implements Serializable{
 	@Column(nullable = false)
 	private String tipo;
 	
-	@Column(nullable = false)
+	@Column
 	private String grade;
 	@Column(nullable = false)
 	private Integer codigo_departamento;
+	
 	public Disciplina() {
 		
 	}
