@@ -36,13 +36,14 @@ public class Disciplina implements Serializable{
 	
 	@Column(nullable = false)
 	private String grade;
-
+	@Column(nullable = false)
+	private Integer codigo_departamento;
 	public Disciplina() {
 		
 	}
 		
 	public Disciplina(Integer codigo_disciplina, String disciplina, double semestre, double horas, int creditos,
-			String tipo, String grade) {
+			String tipo, String grade,Integer codigo_departamento) {
 		super();
 		this.codigo_disciplina = codigo_disciplina;
 		this.disciplina = disciplina;
@@ -51,8 +52,17 @@ public class Disciplina implements Serializable{
 		this.creditos = creditos;
 		this.tipo = tipo;
 		this.grade = grade;
+		this.codigo_departamento = codigo_departamento;
 	}
 	
+	public Integer getCodigo_departamento() {
+		return codigo_departamento;
+	}
+
+	public void setCodigo_departamento(Integer codigo_departamento) {
+		this.codigo_departamento = codigo_departamento;
+	}
+
 	public String getTipo() {
 		return tipo;
 	}
@@ -75,8 +85,6 @@ public class Disciplina implements Serializable{
 		return disciplina;
 	}
 
-
-
 	public void setDisciplina(String disciplina) {
 		this.disciplina = disciplina;
 	}
@@ -87,16 +95,9 @@ public class Disciplina implements Serializable{
 	}
 
 
-
-
-
 	public void setSemestre(double semestre) {
 		this.semestre = semestre;
 	}
-
-
-
-
 
 	public double getHoras() {
 		return horas;
