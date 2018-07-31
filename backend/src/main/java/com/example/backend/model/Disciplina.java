@@ -1,10 +1,12 @@
 package com.example.backend.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Disciplina")
@@ -13,7 +15,7 @@ public class Disciplina implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -6497987270939165315L;
-
+	
 	@Id
 	private Integer codigo_disciplina;
 	
@@ -34,7 +36,7 @@ public class Disciplina implements Serializable{
 	
 	@Column(nullable = false)
 	private String grade;
-	
+
 	public Disciplina() {
 		
 	}
@@ -50,7 +52,7 @@ public class Disciplina implements Serializable{
 		this.tipo = tipo;
 		this.grade = grade;
 	}
-
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -59,25 +61,14 @@ public class Disciplina implements Serializable{
 		this.tipo = tipo;
 	}
 
-	
-
-
-	
 
 	public float getCodigo_disciplina() {
 		return codigo_disciplina;
 	}
 
-
-
-
-
 	public void setCodigo_disciplina(Integer codigo_disciplina) {
 		this.codigo_disciplina = codigo_disciplina;
 	}
-
-
-
 
 
 	public String getDisciplina() {
@@ -86,14 +77,9 @@ public class Disciplina implements Serializable{
 
 
 
-
-
 	public void setDisciplina(String disciplina) {
 		this.disciplina = disciplina;
 	}
-
-
-
 
 
 	public double getSemestre() {

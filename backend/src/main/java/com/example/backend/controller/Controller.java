@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.model.Aluno;
 import com.example.backend.model.Disciplina;
+import com.example.backend.model.RequisitoDisciplina;
 import com.example.backend.service.AlunoService;
 
 import com.example.backend.service.DisciplinaService;
+import com.example.backend.service.RequisitosService;
 
 
 @RestController
@@ -28,6 +30,7 @@ public class Controller {
 	DisciplinaService disciplinaService;
 	@Autowired
 	AlunoService alunoService;
+	
 	
 	
 	@RequestMapping(value = "/aluno", method = RequestMethod.GET)
@@ -44,6 +47,7 @@ public class Controller {
 	public List<Disciplina> listar() {
 		return disciplinaService.disciplinasCadastradas();
 	}
+	
 	/**
 	 * METODO POST DE DISCIPLINA
 	 */
@@ -51,15 +55,22 @@ public class Controller {
 	public Disciplina save(@RequestBody Disciplina disciplina) {
 		return disciplinaService.cadastrarDisciplina(disciplina);
 	}
+	@RequestMapping(value = "/disciplinas/{id}", method = RequestMethod.DELETE)
+	public HttpStatus delete(@PathVariable("id") Integer id, @RequestBody Disciplina disciplina) {
+		if(disciplinaService.deletarDisciplina(id)){
+			return HttpStatus.OK;
+		}
+		return HttpStatus.NOT_FOUND;
+	}
 	
 	/**
 	 * METODO PUT DE DISCIPLINA
 	 */
 	@RequestMapping(value = "/disciplinas", method = RequestMethod.PUT)
-	public ResponseEntity<Disciplina> update( @RequestBody Disciplina disciplina) {
+	public HttpStatus update( @RequestBody Disciplina disciplina) {
 		Disciplina disciplinaAtt  = disciplinaService.update(disciplina);
-		if(disciplinaAtt != null)return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.OK);
-		return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.EXPECTATION_FAILED);
+		if(disciplinaAtt != null)return HttpStatus.OK;
+		return HttpStatus.EXPECTATION_FAILED;
 	}
 //	/**
 //	 * METODO DELETE DE DISCIPLINA PELO ID
