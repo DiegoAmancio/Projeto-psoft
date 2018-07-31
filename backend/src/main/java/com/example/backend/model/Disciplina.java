@@ -72,7 +72,7 @@ public class Disciplina implements Serializable{
 	}
 
 
-	public float getCodigo_disciplina() {
+	public Integer getCodigo_disciplina() {
 		return codigo_disciplina;
 	}
 
