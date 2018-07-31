@@ -24,8 +24,8 @@ public class InteressadoDService {
 		}
 		return false;
 	}
-	public List<InteressadosDisciplina> cadeirasEscolhidas(Iterable<String> matricula){
-		return alunosInteressados.findAllById(matricula);
+	public List<InteressadosDisciplina> cadeirasEscolhidas(String matricula){
+		return alunosInteressados.getAll();
 		
 		
 	}

@@ -1,13 +1,9 @@
 package com.example.backend.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,39 +14,28 @@ public class Aluno{
 	private String matricula;
 	
 	@Column(nullable = false)
-	private String periodo;
+	private String nome;
 	
 	@Column(nullable = false)
 	private String grade;
-	@OneToMany(mappedBy = "aluno_matricula")
-	private Set<InteressadosDisciplina> cadeirasInteressadas;
+	
+	@Column(nullable = false)
+	private String senha;
+	
+	@Column(nullable = false)
+	private String email;
+	
 	
 	public Aluno() {
 		
 	}
-	public Aluno(String matricula, String periodo,String grade) {
-		
+
+	public Aluno(String matricula, String nome, String grade, String senha, String email) {
 		this.matricula = matricula;
-		this.periodo = periodo;
+		this.nome = nome;
 		this.grade = grade;
-		this.cadeirasInteressadas = new HashSet<>();
-	}
-	public boolean addCadeira(InteressadosDisciplina disciplina) {
-		if(!cadeirasInteressadas.contains(disciplina)) {
-			cadeirasInteressadas.add(disciplina);
-			return true;
-		}
-		return false;
-	}
-	
-	public Set<InteressadosDisciplina> getCadeirasInteressadas() {
-		return cadeirasInteressadas;
-	}
-	public void setCadeirasInteressadas(Set<InteressadosDisciplina> cadeirasInteressadas) {
-		this.cadeirasInteressadas = cadeirasInteressadas;
-	}
-	public String getPeriodo() {
-		return periodo;
+		this.senha = senha;
+		this.email = email;
 	}
 
 	public String getMatricula() {
@@ -61,8 +46,12 @@ public class Aluno{
 		this.matricula = matricula;
 	}
 
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getGrade() {
@@ -73,6 +62,21 @@ public class Aluno{
 		this.grade = grade;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 
 }

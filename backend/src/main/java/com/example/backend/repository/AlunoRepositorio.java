@@ -14,6 +14,6 @@ import com.example.backend.model.Aluno;
 @Transactional
 public interface AlunoRepositorio  extends JpaRepository<Aluno,String>{
 	
-	@Query("SELECT matricula,periodo,grade FROM Aluno")
+	@Query("SELECT matricula,nome,grade FROM Aluno")
 	public List<Aluno> findAlunos();
 }
