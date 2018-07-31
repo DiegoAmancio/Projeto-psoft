@@ -15,7 +15,7 @@ public class DisciplinaService  {
 	
 	
 	public Disciplina cadastrarDisciplina(Disciplina novaDisciplina) {
-		Optional<Disciplina> disciplina = disciplinas.findById((long) novaDisciplina.getCodigoDisciplina());
+		Optional<Disciplina> disciplina = disciplinas.findById((int) novaDisciplina.getCodigo_disciplina());
 		
 		if(!disciplina.isPresent()) {
 			disciplinas.save(novaDisciplina);
@@ -32,21 +32,11 @@ public class DisciplinaService  {
 	}
 
 
-	public Disciplina getById(Long id) {
-		Optional<Disciplina> disciplina = disciplinas.findById(id);
-		
-		if(disciplina.isPresent()) {
-			return disciplina.get();
-			
-		}
-		return null;
-	}
 
-
-	public Disciplina update(Disciplina novaDisciplina, Long id) {
-		Optional<Disciplina> disciplinaNoBd = disciplinas.findById(id);
+	public Disciplina update(Disciplina novaDisciplina) {
+		Optional<Disciplina> disciplinaNoBd = disciplinas.findById((int) novaDisciplina.getCodigo_disciplina());
 		if(disciplinaNoBd.isPresent()) {
-			disciplinas.deleteById(id);
+			disciplinas.deleteById((int) novaDisciplina.getCodigo_disciplina());
 			disciplinas.save(novaDisciplina);
 			return novaDisciplina;
 		}

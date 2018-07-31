@@ -1,7 +1,6 @@
 package com.example.backend.service;
 
-
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,18 +8,18 @@ import org.springframework.stereotype.Service;
 import com.example.backend.model.Aluno;
 import com.example.backend.repository.AlunoRepositorio;
 
-
 @Service
 public class AlunoService {
 	@Autowired
-	private AlunoRepositorio alunorepo;
-	
+	private AlunoRepositorio alunoRepositorio;
+
+	public List<Aluno> todasMatriculas() {
+		return alunoRepositorio.findAlunos();
+	}
+
 	public Aluno cadastrarAluno(Aluno aluno) {
-		Optional<Aluno> procurandoAluno = alunorepo.findById(aluno.getMatricula());
-		if(!procurandoAluno.isPresent()) {
-			alunorepo.save(aluno);
-			
-		}
-		return aluno;
+		
+		return alunoRepositorio.save(aluno);
+
 	}
 }

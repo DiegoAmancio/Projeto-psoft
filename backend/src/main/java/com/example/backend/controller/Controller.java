@@ -2,7 +2,7 @@ package com.example.backend.controller;
 
 import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,15 +20,25 @@ import com.example.backend.service.AlunoService;
 import com.example.backend.service.DisciplinaService;
 
 
-
 @RestController
+@RequestMapping(value = "/api")
+@CrossOrigin(origins = "*")
 public class Controller {
-
+	@Autowired
 	DisciplinaService disciplinaService;
+	@Autowired
 	AlunoService alunoService;
-	@RequestMapping(value = "/Aluno", method = RequestMethod.GET)
+	
+	
+	@RequestMapping(value = "/aluno", method = RequestMethod.GET)
+	public List<Aluno> todasMatriculas() {
+		return alunoService.todasMatriculas();
+	}
+	@RequestMapping(value = "/aluno", method = RequestMethod.POST)
 	public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
-		return alunoService.cadastrarAluno(aluno);
+		
+		 return alunoService.cadastrarAluno(aluno);
+		
 	}
 	/**
 	 * METODO GET DE DISCIPLINA
@@ -40,23 +50,17 @@ public class Controller {
 	/**
 	 * METODO POST DE DISCIPLINA
 	 */
-	@RequestMapping(value = "/service", method = RequestMethod.POST)
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.POST)
 	public Disciplina save(@RequestBody Disciplina disciplina) {
 		return disciplinaService.cadastrarDisciplina(disciplina);
 	}
-	/**
-	 * METODO POST DE DISCIPLINA PELO ID
-	 */
-	@RequestMapping(value = "/todo/{id}", method = RequestMethod.GET)
-	public Disciplina getById(@PathVariable("id") Long id) {
-		return disciplinaService.getById(id);
-	}
+	
 	/**
 	 * METODO PUT DE DISCIPLINA
 	 */
-	@RequestMapping(value = "/service/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Disciplina> update(@PathVariable("id") Long id, @RequestBody Disciplina disciplina) {
-		Disciplina disciplinaAtt  = disciplinaService.update(disciplina, id);
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.PUT)
+	public ResponseEntity<Disciplina> update( @RequestBody Disciplina disciplina) {
+		Disciplina disciplinaAtt  = disciplinaService.update(disciplina);
 		if(disciplinaAtt != null)return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.OK);
 		return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.EXPECTATION_FAILED);
 	}
@@ -74,7 +78,7 @@ public class Controller {
 //		return disciplinaService.searchByText(text);
 //	}
 //	
-}
+//}
 
 
 }
