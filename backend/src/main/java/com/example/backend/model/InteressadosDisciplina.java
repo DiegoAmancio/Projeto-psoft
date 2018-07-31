@@ -10,22 +10,23 @@ import javax.persistence.Table;
 public class InteressadosDisciplina {
 	@Id
 	@Column(nullable = false)
-	private String alunoMatricula;
+	private Long alunoMatricula;
 	
 	@Column(nullable = false)
 	private int nDisciplina;
 	
-	public InteressadosDisciplina(String aMatricula, int nDisciplina) {
-		
-		this.alunoMatricula = aMatricula;
+
+	public InteressadosDisciplina(Long alunoMatricula, int nDisciplina) {
+
+		this.alunoMatricula = alunoMatricula;
 		this.nDisciplina = nDisciplina;
 	}
-
-	public String getAlunoMatricula() {
+	
+	public Long getAlunoMatricula() {
 		return alunoMatricula;
 	}
 
-	public void setAlunoMatricula(String alunoMatricula) {
+	public void setAlunoMatricula(Long alunoMatricula) {
 		this.alunoMatricula = alunoMatricula;
 	}
 

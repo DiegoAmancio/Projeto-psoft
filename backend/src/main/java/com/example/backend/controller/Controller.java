@@ -2,7 +2,7 @@ package com.example.backend.controller;
 
 import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,50 +15,62 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.model.Aluno;
 import com.example.backend.model.Disciplina;
+import com.example.backend.model.RequisitoDisciplina;
 import com.example.backend.service.AlunoService;
 
 import com.example.backend.service.DisciplinaService;
-
+import com.example.backend.service.RequisitosService;
 
 
 @RestController
+@RequestMapping(value = "/api")
+@CrossOrigin(origins = "*")
 public class Controller {
-
+	@Autowired
 	DisciplinaService disciplinaService;
+	@Autowired
 	AlunoService alunoService;
-	@RequestMapping(value = "/Aluno", method = RequestMethod.GET)
+	
+	
+	
+	@RequestMapping(value = "/aluno", method = RequestMethod.GET)
+	public List<Aluno> todasMatriculas() {
+		return alunoService.todasMatriculas();
+	}
+	@RequestMapping(value = "/aluno", method = RequestMethod.POST)
 	public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
-		return alunoService.cadastrarAluno(aluno);
+		
+		 return alunoService.cadastrarAluno(aluno);
+		
 	}
-	/**
-	 * METODO GET DE DISCIPLINA
-	 */
-	@RequestMapping(value = "/service", method = RequestMethod.GET)
-	public List<Disciplina> getAll() {
-		return disciplinaService.getAll();
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.GET)
+	public List<Disciplina> listar() {
+		return disciplinaService.disciplinasCadastradas();
 	}
+	
 	/**
 	 * METODO POST DE DISCIPLINA
 	 */
-	@RequestMapping(value = "/service", method = RequestMethod.POST)
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.POST)
 	public Disciplina save(@RequestBody Disciplina disciplina) {
 		return disciplinaService.cadastrarDisciplina(disciplina);
 	}
-	/**
-	 * METODO POST DE DISCIPLINA PELO ID
-	 */
-	@RequestMapping(value = "/todo/{id}", method = RequestMethod.GET)
-	public Disciplina getById(@PathVariable("id") Long id) {
-		return disciplinaService.getById(id);
+	@RequestMapping(value = "/disciplinas/{id}", method = RequestMethod.DELETE)
+	public HttpStatus delete(@PathVariable("id") Integer id, @RequestBody Disciplina disciplina) {
+		if(disciplinaService.deletarDisciplina(id)){
+			return HttpStatus.OK;
+		}
+		return HttpStatus.NOT_FOUND;
 	}
+	
 	/**
 	 * METODO PUT DE DISCIPLINA
 	 */
-	@RequestMapping(value = "/service/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Disciplina> update(@PathVariable("id") Long id, @RequestBody Disciplina disciplina) {
-		Disciplina disciplinaAtt  = disciplinaService.update(disciplina, id);
-		if(disciplinaAtt != null)return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.OK);
-		return new ResponseEntity<Disciplina>(disciplinaAtt, HttpStatus.EXPECTATION_FAILED);
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.PUT)
+	public HttpStatus update( @RequestBody Disciplina disciplina) {
+		Disciplina disciplinaAtt  = disciplinaService.update(disciplina);
+		if(disciplinaAtt != null)return HttpStatus.OK;
+		return HttpStatus.EXPECTATION_FAILED;
 	}
 //	/**
 //	 * METODO DELETE DE DISCIPLINA PELO ID
@@ -74,7 +86,7 @@ public class Controller {
 //		return disciplinaService.searchByText(text);
 //	}
 //	
-}
+//}
 
 
 }

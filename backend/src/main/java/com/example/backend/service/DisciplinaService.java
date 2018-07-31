@@ -6,51 +6,51 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.backend.model.Disciplina;
+import com.example.backend.model.RequisitoDisciplina;
 import com.example.backend.repository.DisciplinasRepositorio;
 
 @Service
 public class DisciplinaService  {
 	@Autowired
 	private DisciplinasRepositorio disciplinas;
+	@Autowired
+	private RequisitosService requisitos;
 	
 	
 	public Disciplina cadastrarDisciplina(Disciplina novaDisciplina) {
-		Optional<Disciplina> disciplina = disciplinas.findById((long) novaDisciplina.getCodigoDisciplina());
+		Optional<Disciplina> disciplina = disciplinas.findById((int) novaDisciplina.getCodigo_disciplina());
 		
 		if(!disciplina.isPresent()) {
 			disciplinas.save(novaDisciplina);
+			
 			
 		}
 		return novaDisciplina;
 		
 	}
-
-
-	public List<Disciplina> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<RequisitoDisciplina> getRequisitos(Integer codigo_disciplina){
+		return requisitos.requisitosCadeira(codigo_disciplina);
+	}
+	public List<Disciplina> disciplinasCadastradas(){
+		return disciplinas.getAll();
 	}
 
-
-	public Disciplina getById(Long id) {
-		Optional<Disciplina> disciplina = disciplinas.findById(id);
-		
-		if(disciplina.isPresent()) {
-			return disciplina.get();
-			
-		}
-		return null;
-	}
-
-
-	public Disciplina update(Disciplina novaDisciplina, Long id) {
-		Optional<Disciplina> disciplinaNoBd = disciplinas.findById(id);
+	public Disciplina update(Disciplina novaDisciplina) {
+		Optional<Disciplina> disciplinaNoBd = disciplinas.findById((int) novaDisciplina.getCodigo_disciplina());
 		if(disciplinaNoBd.isPresent()) {
-			disciplinas.deleteById(id);
+			disciplinas.deleteById((int) novaDisciplina.getCodigo_disciplina());
 			disciplinas.save(novaDisciplina);
 			return novaDisciplina;
 		}
 		return null;
+	}
+	public boolean deletarDisciplina(Integer id) {
+		Optional<Disciplina> disciplinaNoBd = disciplinas.findById(id);
+		if(disciplinaNoBd.isPresent()) {
+			disciplinas.deleteById(id);
+			return true;
+		}
+		return false;
 	}
 	
 }
