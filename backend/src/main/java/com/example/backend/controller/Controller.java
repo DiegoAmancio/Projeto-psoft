@@ -48,8 +48,8 @@ public class Controller {
 		return disciplinaService.disciplinasCadastradas();
 	}
 
-	@RequestMapping(value = "/disciplinas/{id}", method = RequestMethod.DELETE)
-	public HttpStatus delete(@PathVariable("id") Integer id, @RequestBody Disciplina disciplina) {
+	@RequestMapping(value = "/aluno/disciplinas/{id}", method = RequestMethod.DELETE)
+	public HttpStatus delete(@PathVariable("id") Integer id) {
 		if (disciplinaService.deletarDisciplina(id)) {
 			return HttpStatus.OK;
 		}
@@ -67,9 +67,7 @@ public class Controller {
 		return HttpStatus.EXPECTATION_FAILED;
 	}
 
-	/**
-	 * METODO POST DE DISCIPLINA
-	 */
+
 	@RequestMapping(value = "/disciplinas", method = RequestMethod.POST)
 	public Disciplina save(@RequestBody Disciplina disciplina) {
 		return disciplinaService.cadastrarDisciplina(disciplina);
