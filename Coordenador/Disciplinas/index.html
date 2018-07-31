@@ -28,17 +28,20 @@
     </div>
     <div class="container panel panel-primary hidden-print" id="menu" role="navigation">
         <ul class="nav nav-pills">
-            <li><a href="/Aluno/"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
-            <li class="dropdown">
-                <a id="alunoMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="alunoMatriculas">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/Aluno/Cadastro/">Realizar Pré-Matricula</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href=".">Turmas ofertadas</a>
-                    </li>
-                </ul>
+                <li><a href="/Coordenador/"><span class="glyphicon glyphicon-home"></span><span class="sr-only">Página Inicial</span></a></li>
+                <li class="dropdown">
+                    <a id="coordMatriculas" role="button" data-toggle="dropdown" href="#">Pré-Matrículas<b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="coordMatriculas">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="/Coordenador/Cadastro/">Cadastro de Disciplina</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="/Coordenador/Turmas/">Listagem de Pré-Matriculas</a>
+                        </li>
+                        <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="/Coordenador/Disciplinas/">Disciplinas ofertadas</a>
+                            </li>
+                    </ul>
             </li>
             <li class="dropdown">
                 <a id="alunoUsuario" role="button" data-toggle="dropdown" href="#">Usuário<b class="caret"></b></a>
@@ -81,12 +84,14 @@
                         <th class="text-center">Disciplina</th>
                         <th class="text-center">Créditos(Carga horária)</th>
                         <th class="text-center">Tipo de Grade</th>
+                        <th class="text-center">Interesses</th>
+                        <th class="text-center">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="disc in disciplinas">
                         <td class="text-center">
-                            1
+                            {{disc.periodo}}
                         </td>
                         <td class="text-center">
                             {{disc.codigo}}
@@ -99,6 +104,12 @@
                         </td>
                         <td class="text-center">
                             {{disc.grade}}
+                        </td>
+                        <td class="text-center">
+                                0
+                        </td>
+                        <td class="text-center">
+                                <button class="botaoApagar" @click="deletaDisciplina(disc.codigo)"><span class="glyphicon glyphicon-trash"></span></button>
                         </td>
                     </tr>
                     <tr>
