@@ -2,6 +2,8 @@ package com.example.backend.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,32 +11,42 @@ import javax.persistence.Table;
 @Table(name = "InteressadosDisciplina")
 public class InteressadosDisciplina {
 	@Id
+	private String id;
 	@Column(nullable = false)
-	private Long alunoMatricula;
+	private String aluno_matricula;
 	
 	@Column(nullable = false)
-	private int nDisciplina;
+	private Integer n_disciplina;
 	
+	public InteressadosDisciplina() {
+		
+	}
+	public InteressadosDisciplina(String aluno_matricula, Integer n_disciplina) {
 
-	public InteressadosDisciplina(Long alunoMatricula, int nDisciplina) {
-
-		this.alunoMatricula = alunoMatricula;
-		this.nDisciplina = nDisciplina;
+		this.aluno_matricula = aluno_matricula;
+		this.n_disciplina = n_disciplina;
+		this.id = aluno_matricula + n_disciplina;
 	}
 	
-	public Long getAlunoMatricula() {
-		return alunoMatricula;
+	
+	public String getAluno_matricula() {
+		return aluno_matricula;
 	}
 
-	public void setAlunoMatricula(Long alunoMatricula) {
-		this.alunoMatricula = alunoMatricula;
+
+	public void setAluno_matricula(String aluno_matricula) {
+		this.aluno_matricula = aluno_matricula;
 	}
 
-	public int getnDisciplina() {
-		return nDisciplina;
+
+	public Integer getN_disciplina() {
+		return n_disciplina;
 	}
 
-	public void setnDisciplina(int nDisciplina) {
-		this.nDisciplina = nDisciplina;
+
+	public void setN_disciplina(Integer n_disciplina) {
+		this.n_disciplina = n_disciplina;
 	}
+
+
 }

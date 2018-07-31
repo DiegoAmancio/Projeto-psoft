@@ -1,10 +1,12 @@
 package com.example.backend.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.model.Aluno;
 import com.example.backend.model.Disciplina;
-import com.example.backend.model.RequisitoDisciplina;
+import com.example.backend.model.InteressadosDisciplina;
 import com.example.backend.service.AlunoService;
 
 import com.example.backend.service.DisciplinaService;
-import com.example.backend.service.RequisitosService;
+import com.example.backend.service.InteressadoDService;
 
 
 @RestController
@@ -30,6 +32,8 @@ public class Controller {
 	DisciplinaService disciplinaService;
 	@Autowired
 	AlunoService alunoService;
+	@Autowired
+	private  InteressadoDService alunosInteressados;
 	
 	
 	
@@ -48,13 +52,7 @@ public class Controller {
 		return disciplinaService.disciplinasCadastradas();
 	}
 	
-	/**
-	 * METODO POST DE DISCIPLINA
-	 */
-	@RequestMapping(value = "/disciplinas", method = RequestMethod.POST)
-	public Disciplina save(@RequestBody Disciplina disciplina) {
-		return disciplinaService.cadastrarDisciplina(disciplina);
-	}
+	
 	@RequestMapping(value = "/disciplinas/{id}", method = RequestMethod.DELETE)
 	public HttpStatus delete(@PathVariable("id") Integer id, @RequestBody Disciplina disciplina) {
 		if(disciplinaService.deletarDisciplina(id)){
@@ -72,14 +70,39 @@ public class Controller {
 		if(disciplinaAtt != null)return HttpStatus.OK;
 		return HttpStatus.EXPECTATION_FAILED;
 	}
-//	/**
-//	 * METODO DELETE DE DISCIPLINA PELO ID
-//	 */
-//	@RequestMapping(value = "/service/{id}", method = RequestMethod.DELETE)
-//	public ResponseEntity<Disciplina> delete(@PathVariable("id") Long id) {
-//		Disciplina disciplina = disciplinaService.deleteById(id);
-//		return new ResponseEntity<Disciplina>(disciplina, HttpStatus.OK);
-//	}
+	/**
+	 * METODO POST DE DISCIPLINA
+	 */
+	@RequestMapping(value = "/disciplinas", method = RequestMethod.POST)
+	public Disciplina save(@RequestBody Disciplina disciplina) {
+		return disciplinaService.cadastrarDisciplina(disciplina);
+	}
+	@RequestMapping(value = "/disciplinas/{matricula}", method = RequestMethod.GET)
+	public Set<InteressadosDisciplina> cadeirasAluno(@PathVariable("matricula") String matricula) {
+			
+					
+			return alunoService.cadeirasAluno(matricula);
+		
+		
+	}
+	@RequestMapping(value = "/disciplinas/{matricula}", method = RequestMethod.POST)
+	public HttpStatus cadastrar( @RequestBody Integer codigo,@PathVariable("matricula") String matricula) {
+			
+					
+			Optional<Disciplina> disciplina = disciplinaService.findById(codigo);
+			
+			if(disciplina.isPresent()) {
+				alunoService.cadastrarInteresse(new InteressadosDisciplina(matricula,codigo), matricula);
+				return HttpStatus.OK;
+			}
+			
+			
+			
+			return HttpStatus.NOT_FOUND;
+		
+		
+	}
+	
 //	
 //	@RequestMapping(value = "/service/search/{text}", method = RequestMethod.GET)
 //	public List<Disciplina> searchByText(@PathVariable("text") String text) {

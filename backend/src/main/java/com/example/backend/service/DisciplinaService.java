@@ -52,5 +52,9 @@ public class DisciplinaService  {
 		}
 		return false;
 	}
+	public Optional<Disciplina> findById(Integer codigo_disciplina) {
+		// TODO Auto-generated method stub
+		return disciplinas.findById(codigo_disciplina);
+	}
 	
 }
