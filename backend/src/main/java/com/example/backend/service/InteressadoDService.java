@@ -22,7 +22,7 @@ public class InteressadoDService {
 		}
 		return false;
 	}
-
+	
 	public List<InteressadosDisciplina> cadeirasEscolhidas(String matricula) {
 		return alunosInteressados.FindByMatricula(matricula);
 
