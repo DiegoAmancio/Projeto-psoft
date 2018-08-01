@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Disciplina")
+@Table(name = "disciplina")
 public class Disciplina implements Serializable{
 	/**
 	 * 
