@@ -50,8 +50,8 @@ public class ControllerDisciplinas {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
-	public HttpStatus delete(@RequestBody Integer id) {
-		if (disciplinaService.deletarDisciplina(id)) {
+	public HttpStatus delete(@RequestBody Disciplina disciplina) {
+		if (disciplinaService.deletarDisciplina(disciplina.getCodigo_disciplina())) {
 			return HttpStatus.OK;
 		}
 		return HttpStatus.NOT_FOUND;
