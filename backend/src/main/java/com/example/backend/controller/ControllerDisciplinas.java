@@ -27,8 +27,9 @@ public class ControllerDisciplinas {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public Disciplina save(@RequestBody Disciplina disciplina) {
-		return disciplinaService.cadastrarDisciplina(disciplina);
+	public HttpStatus save(@RequestBody Disciplina disciplina) {
+		 disciplinaService.cadastrarDisciplina(disciplina);
+		 return HttpStatus.OK;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.PUT)
@@ -36,7 +37,7 @@ public class ControllerDisciplinas {
 		Disciplina disciplinaAtt = disciplinaService.update(disciplina);
 		if (disciplinaAtt != null)
 			return HttpStatus.OK;
-		return HttpStatus.EXPECTATION_FAILED;
+		return HttpStatus.NOT_FOUND;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)

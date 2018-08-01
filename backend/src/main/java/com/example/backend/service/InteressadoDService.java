@@ -14,15 +14,12 @@ public class InteressadoDService {
 	@Autowired
 	private InteressadoDRepositorio alunosInteressados;
 
-	public Boolean cadastrarInteresse(Integer nova_disciplina, String matricula) {
-		Optional<InteressadosDisciplina> cadastroBd = alunosInteressados.findById(matricula + nova_disciplina);
-		if (!cadastroBd.isPresent()) {
-			alunosInteressados.save(new InteressadosDisciplina(matricula, nova_disciplina));
-			return true;
-		}
-		return false;
+	public void cadastrarInteresse(Integer nova_disciplina, String matricula) {
+
+		alunosInteressados.save(new InteressadosDisciplina(matricula, nova_disciplina));
+
 	}
-	
+
 	public List<InteressadosDisciplina> cadeirasEscolhidas(String matricula) {
 		return alunosInteressados.FindByMatricula(matricula);
 
