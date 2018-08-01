@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="415663373552-3foebghlgeuglmmaan8p0j0id0oi6vlq.apps.googleusercontent.com">
+    <title>Área do Aluno</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Imagens/ufcg.png">
+    <link type="text/css" href="/Styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/Scripts/vue.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=nomeGoogle" async defer></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-top>
+        </my-top>
+        
+        <my-navbar-aluno>
+        </my-navbar-aluno>
+    </div>
+    <div class="container panel panel-primary" id="conteudo" role="main">
+
+        <div id="alunos"></div>
+        <form id="cadastroAluno" class="form-horizontal" @submit="validaCadastro">
+            <div class="form-group">
+                <label class="control-label  col-sm-2"> Matricula </label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="matricula" v-model="matricula">
+                </div>
+            </div>
+            
+            <div class="form-group"> 
+                <label class="control-label col-sm-2"> Nome </label>
+                <div class="col-sm-6">
+                    <label class="form-control" id="nome" v-model="nome">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label class="control-label col-sm-2"> Email </label>
+                <div class="col-sm-6">
+                    <label class="form-control" id="email" v-model="email">
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                    <input type="radio" name="grade" id="old_grade" value="Antiga" v-model="grade" checked>Grade Antiga </br>
+                    <input type="radio" name="grade" id="new_grade" value="Nova" v-model="grade">Grade Nova </br>
+                </div>
+               
+                
+            </div>
+            
+            <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                <button class="btn btn-primary" type="submit">OK</button>
+            </div>
+
+            <div>
+                <label>
+
+                </label>
+            </div>
+            
+        </form>
+
+        
+
+    </div>
+    <script src="/Scripts/autentication.js"></script>
+    <script src="/Scripts/templates.js"></script>
+</body>
+</html>

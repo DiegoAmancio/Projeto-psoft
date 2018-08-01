@@ -1,8 +1,6 @@
 package com.example.backend.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,104 +8,75 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Disciplina")
-public class Disciplina implements Serializable{
+@Table(name = "disciplina")
+public class Disciplina implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6497987270939165315L;
 
 	@Id
+	private Integer codigo_disciplina;
+
 	@Column(nullable = false)
-	private int codigoDisciplina;
-	
-	@Column(nullable = false)
-	private String nomeDisciplina;
-	
+	private String disciplina;
+
 	@Column
-	private String semestre;
-	
-	@Column(nullable = false)
-	private int horas;
-	
+	private double semestre;
+
+	@Column
+	private double horas;
+
 	@Column
 	private int creditos;
-	
-	@Column(nullable = false)
-	private String tipo;
-	
-	@Column(nullable = false)
+
+	@Column
 	private String grade;
-	
-	
-	
-	public Disciplina(String nomeDisciplina,int creditos, int cargaHoraria,String grade) {
-		
-		this.nomeDisciplina = nomeDisciplina;
-		this.horas = cargaHoraria;
+
+	public Disciplina() {
+
+	}
+
+	public Disciplina(Integer codigo_disciplina, String disciplina, double semestre, double horas, int creditos,
+			String grade) {
+		super();
+		this.codigo_disciplina = codigo_disciplina;
+		this.disciplina = disciplina;
+		this.semestre = semestre;
+		this.horas = horas;
 		this.creditos = creditos;
 		this.grade = grade;
-		
-		
-		
-	}
-	public String getTipo() {
-		return tipo;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public Integer getCodigo_disciplina() {
+		return codigo_disciplina;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + codigoDisciplina;
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Disciplina other = (Disciplina) obj;
-		if (codigoDisciplina != other.codigoDisciplina)
-			return false;
-		return true;
-	}
-	public int getCodigoDisciplina() {
-		return codigoDisciplina;
+	public void setCodigo_disciplina(Integer codigo_disciplina) {
+		this.codigo_disciplina = codigo_disciplina;
 	}
 
-	public void setCodigoDisciplina(int codigoDisciplina) {
-		this.codigoDisciplina = codigoDisciplina;
+	public String getDisciplina() {
+		return disciplina;
 	}
 
-	public String getNomeDisciplina() {
-		return nomeDisciplina;
+	public void setDisciplina(String disciplina) {
+		this.disciplina = disciplina;
 	}
 
-	public void setNomeDisciplina(String nomeDisciplina) {
-		this.nomeDisciplina = nomeDisciplina;
-	}
-
-	public String getSemestre() {
+	public double getSemestre() {
 		return semestre;
 	}
 
-	public void setSemestre(String semestre) {
+	public void setSemestre(double semestre) {
 		this.semestre = semestre;
 	}
 
-	public int getHoras() {
+	public double getHoras() {
 		return horas;
 	}
 
-	public void setHoras(int horas) {
+	public void setHoras(double horas) {
 		this.horas = horas;
 	}
 
@@ -127,14 +96,8 @@ public class Disciplina implements Serializable{
 		this.grade = grade;
 	}
 
-	
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	
-	
-	
-}	
-	
+}

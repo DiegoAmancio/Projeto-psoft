@@ -1,8 +1,5 @@
 package com.example.backend.model;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,61 +7,51 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Aluno")
-public class Aluno implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Table(name = "aluno")
+public class Aluno{
+
 	@Id
-	@Column(nullable = false)
-	private Long matricula;
+	private String matricula;
 	
 	@Column(nullable = false)
-	private String periodo;
-	
-	private Set<Disciplina> cadeirasDesejadas;
+	private String nome;
 	
 	@Column(nullable = false)
 	private String grade;
-
-	public Aluno(Long matricula, String periodo,String grade) {
-		this.grade = grade;
-		this.matricula = matricula;
-		this.periodo = periodo;
-		this.cadeirasDesejadas = new HashSet<>();
-	}
 	
-	public void addCadeira(Disciplina disciplina) {
-		if(!cadeirasDesejadas.contains(disciplina)) {
-			cadeirasDesejadas.add(disciplina);
-		}
+	@Column(nullable = false)
+	private String senha;
+	
+	@Column(nullable = false)
+	private String email;
+	
+	
+	public Aluno() {
+		
 	}
 
+	public Aluno(String matricula, String nome, String grade, String senha, String email) {
+		this.matricula = matricula;
+		this.nome = nome;
+		this.grade = grade;
+		this.senha = senha;
+		this.email = email;
+	}
 
-
-	public Long getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(Long matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 
-	public String getPeriodo() {
-		return periodo;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
-	}
-
-	public Set<Disciplina> getCadeirasDesejadas() {
-		return cadeirasDesejadas;
-	}
-
-	public void setCadeirasDesejadas(Set<Disciplina> cadeirasDesejadas) {
-		this.cadeirasDesejadas = cadeirasDesejadas;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getGrade() {
@@ -75,13 +62,21 @@ public class Aluno implements Serializable{
 		this.grade = grade;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getSenha() {
+		return senha;
 	}
-	
-	
-	
 
-	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 }

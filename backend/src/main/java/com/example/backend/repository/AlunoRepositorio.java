@@ -6,17 +6,14 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.backend.model.Aluno;
 
 @Repository
 @Transactional
-public interface AlunoRepositorio  extends JpaRepository<Aluno,Long>{
-	@Query("SELECT * FROM Aluno WHERE text = matricula")
-	public Aluno findAlunoByMatricula(@Param("text") String text);
+public interface AlunoRepositorio  extends JpaRepository<Aluno,String>{
 	
-	@Query("SELECT * FROM Aluno")
+	@Query("SELECT matricula,nome,grade FROM Aluno")
 	public List<Aluno> findAlunos();
 }
