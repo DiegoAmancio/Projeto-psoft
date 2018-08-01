@@ -21,9 +21,9 @@ import com.example.backend.service.DisciplinaService;
 import com.example.backend.service.InteressadoDService;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/aluno")
 @CrossOrigin(origins = "*")
-public class Controller {
+public class ControllerAluno {
 	@Autowired
 	DisciplinaService disciplinaService;
 	@Autowired
@@ -31,47 +31,21 @@ public class Controller {
 	@Autowired
 	private InteressadoDService alunosInteressados;
 
-	@RequestMapping(value = "/aluno", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Aluno> todasMatriculas() {
 		return alunoService.todasMatriculas();
 	}
 
-	@RequestMapping(value = "/aluno", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
 
 		return alunoService.cadastrarAluno(aluno);
 
 	}
 
-	@RequestMapping(value = "/disciplinas", method = RequestMethod.GET)
-	public List<Disciplina> listar() {
-		return disciplinaService.disciplinasCadastradas();
-	}
-
-	@RequestMapping(value = "/aluno/disciplinas/{id}", method = RequestMethod.DELETE)
-	public HttpStatus delete(@PathVariable("id") Integer id) {
-		if (disciplinaService.deletarDisciplina(id)) {
-			return HttpStatus.OK;
-		}
-		return HttpStatus.NOT_FOUND;
-	}
-
 	/**
 	 * METODO PUT DE DISCIPLINA
 	 */
-	@RequestMapping(value = "/disciplinas", method = RequestMethod.PUT)
-	public HttpStatus update(@RequestBody Disciplina disciplina) {
-		Disciplina disciplinaAtt = disciplinaService.update(disciplina);
-		if (disciplinaAtt != null)
-			return HttpStatus.OK;
-		return HttpStatus.EXPECTATION_FAILED;
-	}
-
-
-	@RequestMapping(value = "/disciplinas", method = RequestMethod.POST)
-	public Disciplina save(@RequestBody Disciplina disciplina) {
-		return disciplinaService.cadastrarDisciplina(disciplina);
-	}
 
 	@RequestMapping(value = "/disciplinas/{matricula}", method = RequestMethod.GET)
 	public List<InteressadosDisciplina> cadeirasAluno(@PathVariable("matricula") String matricula) {
@@ -81,7 +55,8 @@ public class Controller {
 	}
 
 	@RequestMapping(value = "/disciplinas/{matricula}", method = RequestMethod.POST)
-	public HttpStatus cadastrar(@RequestBody Integer codigo, @PathVariable("matricula") String matricula) {
+	public HttpStatus cadastrarCadeiraInteresse(@RequestBody Integer codigo,
+			@PathVariable("matricula") String matricula) {
 
 		Optional<Disciplina> disciplina = disciplinaService.findById(codigo);
 		Optional<Aluno> aluno = alunoService.getAluno(matricula);
@@ -94,4 +69,5 @@ public class Controller {
 
 	}
 
+	
 }
