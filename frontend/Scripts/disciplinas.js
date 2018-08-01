@@ -1,3 +1,49 @@
+//import axios
+new Vue({
+    el: '#cadastroAluno',
+    data: {
+        nome: "",
+        cadastrado: false,
+        matricula: "",
+        periodo: "",
+        grade: "",
+        disciplinas: []
+    },
+    methods: {
+        geraPeriodo: function(){
+            x = matricula.substring(1,4);
+            periodo = x[0] + x[1] + "." + x[3];
+        },
+        validaCadastro: function(){
+            if(grade == "" || matricula == ""){
+                alert("Cadastro não concluido");
+            }
+            else{
+                //cadastraAluno()
+                cadastrado = true;
+                alert("Cadastro concluido");
+            }
+        },
+        alunoCadastrado: function(){
+            return cadastrado;
+        }
+    }
+})
+
+alunos = new Vue({
+    el: '#alunos',
+    data:{
+        alunos: []
+    },
+    methods: {
+        getAlunos: function(){
+            //getAllAlunos
+            return alunos;
+        }
+    }
+
+})
+
 new Vue({
     el: '#cadastro_disc',
     data: {
@@ -48,6 +94,7 @@ disc = new Vue({
     },
     methods: {
         getDisc: function(){
+            //getAllDisciplinas
             return disciplinas;
         },
         validaCreditos: function(){
@@ -63,12 +110,24 @@ disc = new Vue({
                 alert("Combinação inválida");
             }
             else{
-                //cadastraPreMatricula();
+//                cadastraPreMatricula();
                 alert("Pré-matricula executada com sucesso");
             }
+        }
+    }
+})
+
+disc2 = new Vue({
+    el: '#disciplinasCoord',
+    data:{
+        disciplinas:[] //Precisa pegar do banco de dados
+    },
+    methods: {
+        getDisc: function(){
+            return disciplinas;
         },
         deletaDisciplina: function(codigo){
-            //deleta no banco de dados
+            //deleta no banco de dados axios.delete('/api/disciplinas/'+codigo);
         }
     }
 })
@@ -89,16 +148,49 @@ function cadastra_disciplina(periodo, nome, codigo, credito, carga, grade){
     disciplina.creditos = credito;
     disciplina.carga = carga;
     disciplina.grade = grade;
+//    postaDisciplina(disciplina);
     disc.disciplinas.push(disciplina);
+    disc2.disciplinas.push(disciplina);
+
 }
 
-function update(discs){
+function postaDisciplina(disciplina){
+    axios.post( '/api/disciplinas', disc).then(function(){
+        console.log('SUCCESS!!');
+        })
+        .catch(function(){
+        console.log('FAILURE!!');
+        });
+}
+
+function cadastra(discs){
     semOptativas = discs.filter(e => e.disciplina.substring(0,8) != "Optativa");
-    semOptativas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Ambas'));
+    semOptativas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Nova'));
 }
 
+function cadastra2(discs){
+    semOptativas = discs.filter(e => e.disciplina.substring(0,8) != "Optativa");
+    novas = disc.getDisc();
+    novasNome = novas.map(e => e.nome)
+    repetidas = semOptativas.filter(e => e.nome in novasNome);
+    naoRepetidas = semOptativas.filter(e => !(e.nome in novasNome));
+    novasFitler = novas.filter(e => !(e in repetidas) && !(e in naoRepetidas));
+    novaFilter.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Nova'));
+    repetidas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Ambas'));
+    naoRepetidas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Antiga'));
+}
 
-fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => update(promise));
+function get_disciplinas(){
+    axios.get('/api/disciplinas').then(e => disc.disciplinas.push(e));
+}
+
+function get_alunos(){
+    axios.get('/api/alunos').then(e => alunos.alunos.push(e));
+}
+
+//get_disciplinas()
+fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise));
+fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra2(promise));
 /*cadastra_disciplina('OAC', '0401', 4, 60, 'Ambas');
 cadastra_disciplina('LOAC', '0402', 4, 60, 'Ambas');
 cadastra_disciplina('PLP', '0403', 4, 60, 'Ambas');
