@@ -47,12 +47,12 @@ alunos = new Vue({
 new Vue({
     el: '#cadastro_disc',
     data: {
-        nome: "",
-        codigo: "",
+        disciplina: "",
+        codigo_disciplina: "",
         creditos: 0,
-        carga: 0,
+        horas: 0,
         grade: "",
-        periodo: ""
+        semestre: ""
 
     },
     methods:{
@@ -95,7 +95,7 @@ disc = new Vue({
     methods: {
         getDisc: function(){
             //getAllDisciplinas
-            return disciplinas;
+            return this.disciplinas;
         },
         validaCreditos: function(){
             creditos = selecionadas.map(e => e.creditos).reduce((e,a) => e+a);
@@ -124,7 +124,7 @@ disc2 = new Vue({
     },
     methods: {
         getDisc: function(){
-            return disciplinas;
+            return this.disciplinas;
         },
         deletaDisciplina: function(codigo){
             //deleta no banco de dados axios.delete('/api/disciplinas/'+codigo);
@@ -142,25 +142,65 @@ function existe_codigo_disc(codigo, grade){
 
 function cadastra_disciplina(periodo, nome, codigo, credito, carga, grade){
     disciplina = {};
-    disciplina.periodo = periodo;
-    disciplina.nome = nome;
-    disciplina.codigo = codigo;
+    disciplina.semestre = periodo;
+    disciplina.disciplina = nome;
+    disciplina.codigo_disciplina = codigo;
     disciplina.creditos = credito;
-    disciplina.carga = carga;
+    disciplina.horas = carga;
     disciplina.grade = grade;
-//    postaDisciplina(disciplina);
-    disc.disciplinas.push(disciplina);
-    disc2.disciplinas.push(disciplina);
+    postaDisciplina(disciplina);
+    disc.disciplinas.push(disciplina);    
 
 }
 
+function altera_disciplina(periodo, nome, codigo, credito, carga, grade){
+    disciplina = {};
+    disciplina.semestre = periodo;
+    disciplina.disciplina = nome;
+    disciplina.codigo_disciplina = codigo;
+    disciplina.creditos = credito;
+    disciplina.horas = carga;
+    disciplina.grade = grade;
+    putDisciplina(disciplina);
+    disc.disciplinas.push(disciplina);
+}
+
+function putDisciplina(disciplina){
+    fetch('http://localhost:8088/disciplinas/', {
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        method: "PUT", body: JSON.stringify(disciplina)})
+        .then(response => response.json()).then(e => console.log("" + e));
+}
+
+function putDisciplina(disciplina){
+    fetch('http://localhost:8088/disciplinas/', {
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        method: "PUT", body: JSON.stringify(disciplina)})
+        .then(response => response.json()).then(e => console.log("" + e));
+}
+
 function postaDisciplina(disciplina){
-    axios.post( '/api/disciplinas', disc).then(function(){
-        console.log('SUCCESS!!');
-        })
-        .catch(function(){
-        console.log('FAILURE!!');
-        });
+    fetch('http://localhost:8088/disciplinas/', {
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        method: "POST", body: JSON.stringify(disciplina)})
+        .then(response => response.json()).then(e => console.log("" + e));
+}
+
+function cadastra2(discs){
+    semOptativas = discs.filter(e => e.disciplina.substring(0,8) != "Optativa");
+    novas = disc.getDisc();
+    novasNome = novas.map(e => e.nome)
+    repetidas = semOptativas.filter(e => e.nome in novasNome);
+    naoRepetidas = semOptativas.filter(e => !(e.nome in novasNome));
+
+    repetidas.map(e => altera_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Ambas'));
+    naoRepetidas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Antiga'));
 }
 
 function cadastra(discs){
@@ -171,30 +211,27 @@ function cadastra(discs){
 function cadastra2(discs){
     semOptativas = discs.filter(e => e.disciplina.substring(0,8) != "Optativa");
     novas = disc.getDisc();
-    novasNome = novas.map(e => e.nome)
+    novasNome = novas.map(e => e.nome);
     repetidas = semOptativas.filter(e => e.nome in novasNome);
     naoRepetidas = semOptativas.filter(e => !(e.nome in novasNome));
-    novasFitler = novas.filter(e => !(e in repetidas) && !(e in naoRepetidas));
-    novaFilter.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Nova'));
-    repetidas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Ambas'));
+
+    repetidas.map(e => altera_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Ambas'));
     naoRepetidas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Antiga'));
 }
 
 function get_disciplinas(){
-    axios.get('/api/disciplinas').then(e => disc.disciplinas.push(e));
+    fetch('http://localhost:8088/disciplinas').then(response => response.json()).then(promise => cadastraD(promise));
+}
+
+function cadastraD(discs){
+    console.log(discs);
+    discs.map(e => console.log(e));
 }
 
 function get_alunos(){
     axios.get('/api/alunos').then(e => alunos.alunos.push(e));
-}
 
-//get_disciplinas()
-fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise));
-fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra2(promise));
-/*cadastra_disciplina('OAC', '0401', 4, 60, 'Ambas');
-cadastra_disciplina('LOAC', '0402', 4, 60, 'Ambas');
-cadastra_disciplina('PLP', '0403', 4, 60, 'Ambas');
-cadastra_disciplina('PSoft', '0404', 4, 60, 'Ambas');
-cadastra_disciplina('BD', '0405', 4, 60, 'Ambas');
-cadastra_disciplina('EDA', '0301', 4, 60, 'Ambas');
-cadastra_disciplina('LEDA', '0302', 4, 60, 'Ambas');*/
+}
+get_disciplinas();
+//fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise));
+//fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra2(promise));

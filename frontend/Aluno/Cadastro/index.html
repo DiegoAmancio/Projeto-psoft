@@ -14,7 +14,7 @@
     <script src="/Scripts/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -52,16 +52,16 @@
                 <tbody>
                     <tr v-for="disc in disciplinas">
                         <td class="text-center">
-                            {{disc.periodo}}
+                            {{disc.semestre}}
                         </td>
                         <td class="text-center">
-                            {{disc.codigo}}
+                            {{disc.codigo_disciplina}}
                         </td>
                         <td class="text-center">
-                            {{disc.nome}}
+                            {{disc.disciplina}}
                         </td>
                         <td class="text-center">
-                            {{disc.creditos}} ({{disc.carga}})<br>
+                            {{disc.creditos}} ({{disc.horas}})<br>
                         </td>
                         <td class="text-center">
                             {{disc.grade}}

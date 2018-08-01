@@ -13,7 +13,7 @@ import com.example.backend.model.Disciplina;
 @Transactional
 public interface DisciplinasRepositorio extends JpaRepository<Disciplina, Integer> {
 
-	@Query("SELECT codigo_disciplina,disciplina FROM Disciplina")
+	@Query("SELECT d FROM Disciplina d")
 	public List<Disciplina> getAll();
 
 }

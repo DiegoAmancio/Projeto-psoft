@@ -16,6 +16,7 @@ import com.example.backend.service.DisciplinaService;
 
 @RestController
 @RequestMapping(value = "/disciplinas")
+@CrossOrigin(origins = "*")
 public class ControllerDisciplinas {
 	@Autowired
 	DisciplinaService disciplinaService;
