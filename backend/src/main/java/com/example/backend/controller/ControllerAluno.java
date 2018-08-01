@@ -37,10 +37,10 @@ public class ControllerAluno {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
+	public HttpStatus cadastrarAluno(@RequestBody Aluno aluno) {
 
-		return alunoService.cadastrarAluno(aluno);
-
+		 alunoService.cadastrarAluno(aluno);
+		 return HttpStatus.OK;
 	}
 
 	/**
