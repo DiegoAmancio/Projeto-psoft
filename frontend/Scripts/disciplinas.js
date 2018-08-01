@@ -175,6 +175,7 @@ function putDisciplina(disciplina){
 }
 
 function putDisciplina(disciplina){
+    conosle.log("Chegou");
     fetch('http://localhost:8088/disciplinas/', {
         headers: {
               'Content-Type': 'application/json'
@@ -189,7 +190,7 @@ function postaDisciplina(disciplina){
               'Content-Type': 'application/json'
         },
         method: "POST", body: JSON.stringify(disciplina)})
-        .then(response => response.json()).then(e => console.log("" + e));
+        .then(response => response.json());
 }
 
 function cadastra2(discs){
@@ -219,19 +220,18 @@ function cadastra2(discs){
     naoRepetidas.map(e => cadastra_disciplina(e.semestre, e.disciplina, e.codigo_disciplina, e.creditos, e.horas, 'Antiga'));
 }
 
-function get_disciplinas(){
-    fetch('http://localhost:8088/disciplinas').then(response => response.json()).then(promise => cadastraD(promise));
-}
+
 
 function cadastraD(discs){
-    console.log(discs);
-    discs.map(e => console.log(e));
+    discs.map(e => disc.disciplinas.push(e));
 }
-
+/*
 function get_alunos(){
     axios.get('/api/alunos').then(e => alunos.alunos.push(e));
 
 }
-get_disciplinas();
+*/
+
 //fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise));
+fetch('http://localhost:8088/disciplinas/').then(response => response.json()).then(promise => cadastraD(promise));
 //fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra2(promise));
