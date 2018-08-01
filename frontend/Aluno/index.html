@@ -14,6 +14,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="/Scripts/vue.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=nomeGoogle" async defer></script>
 </head>
 
 <body>
@@ -24,21 +25,43 @@
         <my-navbar-aluno>
         </my-navbar-aluno>
     </div>
-        
-     <script>
-                    function signOut() {
-                        var auth2 = gapi.auth2.getAuthInstance();
-                        auth2.signOut().then(function () {
-                            console.log('User signed out.');
-                        });
-                    }
-                    function onLoad() {
-                        gapi.load('auth2', function() {
-                            gapi.auth2.init();
-                        });
-                        }
-    </script>
+    <div class="container panel panel-primary" id="conteudo" role="main">
 
+        <div id="alunos"></div>
+        <form id="cadastroAluno" class="form-horizontal" @submit="validaCadastro">
+            <div class="form-group">
+                <label class="control-label  col-sm-2"> Matricula </label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="matricula" v-model="matricula">
+                </div>
+            </div>
+            
+           
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                    <input type="radio" name="grade" id="old_grade" value="Antiga" v-model="grade" checked>Grade Antiga </br>
+                    <input type="radio" name="grade" id="new_grade" value="Nova" v-model="grade">Grade Nova </br>
+                </div>
+               
+                
+            </div>
+            
+            <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                <button class="btn btn-primary" type="submit">OK</button>
+            </div>
+
+            <div>
+                <label>
+
+                </label>
+            </div>
+            
+        </form>
+
+        
+
+    </div>
+    <script src="/Scripts/autentication.js"></script>
     <script src="/Scripts/templates.js"></script>
 </body>
 </html>
