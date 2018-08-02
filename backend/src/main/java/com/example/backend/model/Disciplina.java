@@ -1,11 +1,9 @@
 package com.example.backend.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "disciplina")
@@ -16,28 +14,32 @@ public class Disciplina implements Serializable {
 	private static final long serialVersionUID = -6497987270939165315L;
 
 	@Id
-	private Integer codigo_disciplina;
+	@Column(name = "codigo_disciplina")
+	private int codigo_disciplina;
 
-	@Column(nullable = false)
+	@Column(nullable = false, name = "disciplina")
 	private String disciplina;
 
-	@Column
+	@Column(name = "semestre")
 	private double semestre;
 
-	@Column
+	@Column(name = "horas")
 	private double horas;
 
-	@Column
+	@Column(name = "creditos")
 	private int creditos;
 
-	@Column
+	@Column(name = "grade")
 	private String grade;
+
+	@OneToMany(mappedBy = "cadeiras")
+	Set<Aluno> users;
 
 	public Disciplina() {
 
 	}
 
-	public Disciplina(Integer codigo_disciplina, String disciplina, double semestre, double horas, int creditos,
+	public Disciplina(int codigo_disciplina, String disciplina, double semestre, double horas, int creditos,
 			String grade) {
 		super();
 		this.codigo_disciplina = codigo_disciplina;
@@ -52,7 +54,7 @@ public class Disciplina implements Serializable {
 		return codigo_disciplina;
 	}
 
-	public void setCodigo_disciplina(Integer codigo_disciplina) {
+	public void setCodigo_disciplina(int codigo_disciplina) {
 		this.codigo_disciplina = codigo_disciplina;
 	}
 

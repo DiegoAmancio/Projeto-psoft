@@ -1,45 +1,52 @@
 package com.example.backend.model;
 
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "aluno")
-public class Aluno{
+public class Aluno {
 
 	@Id
+	@Column(name = "matricula")
 	private String matricula;
-	
-	@Column(nullable = false)
+
+	@Column(nullable = false, name = "nome_completo")
 	private String nome;
-	
-	@Column(nullable = false)
+
+	@Column(nullable = false, name = "grade")
 	private String grade;
-	
-	@Column(nullable = false)
-	private String senha;
-	
-	@Column(nullable = false)
+
+	@Column(nullable = false, name = "email")
 	private String email;
-	
-	
+
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY) 
+	@JoinColumn(name = "cadeiras_aluno")
+	private Set<Disciplina> cadeiras;
+
 	public Aluno() {
-		
+
 	}
 
-	public Aluno(String matricula, String nome, String grade, String senha, String email) {
+	public Aluno(String matricula, String nome, String grade, String email) {
 		this.matricula = matricula;
 		this.nome = nome;
 		this.grade = grade;
-		this.senha = senha;
 		this.email = email;
 	}
 
 	public String getMatricula() {
 		return matricula;
+	}
+
+	
+	public Set<Disciplina> getCadeiras() {
+		return cadeiras;
+	}
+
+	public void setCadeiras(Set<Disciplina> cadeiras) {
+		this.cadeiras = cadeiras;
 	}
 
 	public void setMatricula(String matricula) {
@@ -62,14 +69,6 @@ public class Aluno{
 		this.grade = grade;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -77,6 +76,5 @@ public class Aluno{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 }
