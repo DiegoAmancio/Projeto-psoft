@@ -88,7 +88,7 @@ disciplinas = new Vue({
         },
         deletaDisciplina: function(codigo){
             disciplina = this.get_disciplina(codigo)[0];
-            this.apaga_disciplina('http://localhost:8088/disciplinas/', disciplina);
+            this.apaga_disciplina(disciplina);
         },
         get_disciplina: function(codigo){
             element = this.disciplinas.filter(e => e.codigo_disciplina == codigo);
@@ -97,15 +97,16 @@ disciplinas = new Vue({
             }
             return element;
         },
-        apaga_disciplina: function(url, disciplina){
-            fetch(url,{
+        apaga_disciplina: function(disciplina){
+            console.log(JSON.stringify(disciplina));
+            fetch('https://backend-matricula.herokuapp.com/disciplinas/', {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 method: "DELETE", 
-                body: JSON.stringify(disciplina)
+                body: JSON.stringify(disciplina.codigo_disciplina)
             })
-        .then(response => response.json());
+        .then(response => response.json()).then(e => console.log(e));
         }, 
     }
 })
@@ -133,7 +134,7 @@ function altera_disciplina(periodo, nome, codigo, credito, carga, grade){
 }
 
 function putDisciplina(disciplina){
-    fetch('http://localhost:8088/disciplinas/', {
+    fetch('https://backend-matricula.herokuapp.com/disciplinas/', {
         headers: {
               'Content-Type': 'application/json'
         },
@@ -143,12 +144,12 @@ function putDisciplina(disciplina){
 
 
 function postaDisciplina(disciplina){
-    fetch('http://localhost:8088/disciplinas/', {
+    fetch('https://backend-matricula.herokuapp.com/disciplinas/', {
         headers: {
               'Content-Type': 'application/json'
         },
         method: "POST", body: JSON.stringify(disciplina)})
-        .then(response => response.json());
+        .then(response => response.json()).then(response => console.log(response));
 }
 
 function cadastra(discs, grade){
@@ -157,12 +158,27 @@ function cadastra(discs, grade){
 }
 
 function get_disciplinas(){
-    fetch('http://localhost:8088/disciplinas/')
+    fetch('https://backend-matricula.herokuapp.com/disciplinas/')
     .then(response => response.json())
      .then(function(promise){
         disciplinas.disciplinas = promise;
      })
 }
 
-//fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Nova"));
-//fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Antiga"));
+function importa_disciplinas_api_analytics(){
+    fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Nova")).catch(console.log("API do analytics fora do ar"));
+    fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Antiga")).catch(console.log("API do analytics fora do ar"));
+}
+
+function apagar_todas_disciplinas(){
+    discs = disciplinas.getDisc();
+    yesno = confirm("Deseja realmente apagar todas as disciplinas?");
+    if(yesno){
+        discs.map(e => disciplinas.apaga_disciplina(e));        
+        alert('Disciplinas apagadas');
+    }        
+    else{
+        alert('Nenhuma disciplina foi deletada');
+    }
+}
+
