@@ -1,3 +1,4 @@
+
 new Vue({
     el: '#cadastroAluno',
     data: {
@@ -10,16 +11,16 @@ new Vue({
     },
     methods: {
         geraPeriodo: function(){
-            x = matricula.substring(1,4);
-            periodo = x[0] + x[1] + "." + x[3];
+            x = this.matricula.substring(1,4);
+            this.periodo = x[0] + x[1] + "." + x[3];
         },
         validaCadastro: function(){
-            if(grade == "" || matricula == ""){
+            if(this.grade == "" || this.matricula == ""){
                 alert("Cadastro não concluido");
             }
             else{
-                //cadastraAluno()
-                cadastrado = true;
+                cadastraAluno(this.grade, this.matricula);
+                this.cadastrado = true;
                 alert("Cadastro concluido");
             }
         },
@@ -42,3 +43,12 @@ new Vue({
     }
 
 })
+
+function cadastraAluno(grade, matricula){
+    aluno = {};
+    aluno.grade = grade;
+    aluno.matricula = matricula;
+    var user = gapi.auth2.getAuthInstance().currentUser.Ab.w3;
+    email = user.U3;
+    nome = user.ig;
+}

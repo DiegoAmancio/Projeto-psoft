@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,7 +15,6 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="/Scripts/vue.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-    <script src="https://apis.google.com/js/platform.js?onload=pegaemailgoogle" async defer></script>
     <script src="https://apis.google.com/js/platform.js?onload=nomeGoogle" async defer></script>
 </head>
 
@@ -27,14 +27,40 @@
         </my-navbar-aluno>
     </div>
     <div class="container panel panel-primary" id="conteudo" role="main">
-        <h3>Seja bem vindo ao sistema de pré matricula do curso de Ciência da Computação na UFCG</h3>
-        <p><label class="control-label  col-sm-2"> Aluno: </label> seunome</p>
-        <p><label class="control-label  col-sm-2"> Matricula: </label> suamatricula</p>
-        <p><label class="control-label  col-sm-2"> Email: </label> seuemail</p>
-        <p><label class="control-label  col-sm-2"> Periodo de entrada: </label> seusemestr</p>
-        <p><label class="control-label  col-sm-2"> Curso: </label>CIÊNCIA DA COMPUTAÇÃO</p>
-        <p><label class="control-label  col-sm-2"> Campos: </label> 1 - CAMPINA GRANDE</p>
+
+        <div id="alunos"></div>
+        <form id="cadastroAluno" class="form-horizontal" @submit="validaCadastro">
+            <div class="form-group">
+                <label class="control-label  col-sm-2"> Matricula </label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="matricula" v-model="matricula">
+                </div>
+            </div>
+            
+           
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                    <input type="radio" name="grade" id="old_grade" value="Antiga" v-model="grade" checked>Grade Antiga </br>
+                    <input type="radio" name="grade" id="new_grade" value="Nova" v-model="grade">Grade Nova </br>
+                </div>
+               
+                
+            </div>
+            
+            <div class="col-sm-offset-2 col-xs-offset-1 col-sm-6">
+                <button class="btn btn-primary" type="submit">OK</button>
+            </div>
+
+            <div>
+                <label>
+
+                </label>
+            </div>
+            
+        </form>        
+
     </div>
+    <script src="/Scripts/alunos.js"></script>
     <script src="/Scripts/autentication.js"></script>
     <script src="/Scripts/templates.js"></script>
 </body>
