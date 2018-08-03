@@ -11,9 +11,7 @@ new Vue({
     },
     methods:{
         atualizacarga: function(){
-            creditos = document.getElementById('creditos').value;
-            horas = creditos*15;
-            document.getElementById('horas').value = horas;
+            this.horas = this.creditos*15;
         },
         validaCadastro: function(){
             if(this.disciplina == "" || this.codigo_disciplina == "" || this.grade == "" || this.semestre == ""){
@@ -25,7 +23,7 @@ new Vue({
                 if(atualizar){
                     yesno = confirm("Código ja existe, deseja atualizar a disciplina?");
                     if(yesno){
-                        altera_disciplina(this.semestre, this.disciplina, this.codigo_disciplina, this.creditos, this.hora, this.grade);
+                        altera_disciplina(this.semestre, this.disciplina, this.codigo_disciplina, this.creditos, this.cresitos*4, this.grade);
                         alert('Disciplina cadastrada');
                     }        
                     else{
@@ -82,7 +80,7 @@ disciplinas = new Vue({
                 alert("Combinação inválida");
             }
             else{
-//                cadastraPreMatricula();
+                cadastra_pre_matricula(this.selecionadas);
                 alert("Pré-matricula executada com sucesso");
             }
         },
@@ -110,6 +108,34 @@ disciplinas = new Vue({
         }, 
     }
 })
+
+function cadastra_pre_matricula(discs){
+    disciplinasInteresse = discs.map(e => e = e.codigo_disciplina);
+    matr = matricula;
+    disciplinasInteresse.map(e => cadastra_interesse(e, matr));
+}
+
+function cadastra_interesse(disc, matr){
+    fetch('https://backend-matricula.herokuapp.com/alunos/' + matr, {
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        method: "POST", body: JSON.stringify(disc)})
+        .then(response => response.json()).then(response => console.log(response));
+}
+
+function carrega_aluno_cadastro(){
+    var user = gapi.auth2.getAuthInstance().currentUser.Ab.w3;
+    email = user.U3;
+    fetch('https://backend-matricula.herokuapp.com/alunos/').then(response => response.json()).then(promise => carregaMatricula(promise, email));
+}
+
+var matricula = ""
+
+function carregaMatricula(todos, email){
+    alunoAtual = todos.filter(e => e.email == email)[0];
+    matricula = alunoAtual.matricula;
+}
 
 function cadastra_disciplina(periodo, nome, codigo, credito, carga, grade){
     disciplina = {};
@@ -166,7 +192,7 @@ function get_disciplinas(){
 }
 
 function importa_disciplinas_api_analytics(){
-    fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Nova")).catch(console.log("API do analytics fora do ar"));
+    fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_i_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Nova")).catch(alert("API do analytics fora do ar"));
     fetch('http://analytics.ufcg.edu.br/pre/ciencia_da_computacao_d_cg/disciplinas').then(response => response.json()).then(promise => cadastra(promise, "Antiga")).catch(console.log("API do analytics fora do ar"));
 }
 

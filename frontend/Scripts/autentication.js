@@ -48,6 +48,12 @@ function verifica_login_aluno(precisa_cadastro){
     else if(email == "projsw@ccc.ufcg.edu.br"){
         window.location = "/Coordenador"
     }
+    else if(window.location.href.includes("/Aluno/Cadastro")){
+        carrega_aluno_cadastro();
+    }
+    else{
+        getAlunoAtual();
+    }
 }
 
 function verifica_login_coordenador(){

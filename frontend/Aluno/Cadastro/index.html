@@ -76,18 +76,17 @@
             <p>Disciplinas selecionadas: </p>
 
             <div v-for="disc in selecionadas" :key="disc.codigo">
-                <ul>  <li>{{disc.nome}}</li>            </ul>
+                <ul>  <li>{{disc.disciplina}}</li>            </ul>
             </div>
 
 
-            {{selecionadas}} (Isso ta aqui pra testes)
 
             <div class="form-group">
                 <button class="btn btn-primary" type="submit" id="salvar">OK</button>
             </div>
         </form>
     </div>
-    
+    <script src="/Scripts/alunos.js"></script>
     <script src="/Scripts/autentication.js"></script>
     <script src="/Scripts/disciplinas.js"></script>
     <script src="/Scripts/templates.js"></script>

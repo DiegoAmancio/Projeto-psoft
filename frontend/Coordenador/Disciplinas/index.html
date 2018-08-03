@@ -9,7 +9,6 @@
     <link type="text/css" href="/Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script src="/Scripts/vue.js"></script>
     <script src="/Scripts/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
@@ -29,17 +28,7 @@
     <div class="container panel panel-primary text-center" id="conteudo" role="main">
 
         <div class="text-right hidden-print">
-            <script type="text/javascript">
-                $(function () {
-                    var anterior = "";
-                    $('#tabOferta > tbody > tr > td:first-child').each(function (index, td) {
-                        if ($(td).html() != anterior) {
-                            anterior = $(td).html();
-                            $(td).parent().css("border-top", "3px solid #428bca");
-                        }
-                    });
-                });
-            </script>
+
         </div><h2>Disciplinas Ofertadas</h2>
         <div class="row">
             <div class="col-sm-2 col-xs-1 text-right"><b>Curso: </b> </div>
@@ -77,7 +66,7 @@
                             {{disc.grade}}
                         </td>
                         <td class="text-center">
-                                0
+                            0
                         </td>
                         <td class="text-center">
                                 <a href="."><button class="botaoApagar" @click="deletaDisciplina(disc.codigo_disciplina)"><span class="glyphicon glyphicon-trash"></span></button></a>
