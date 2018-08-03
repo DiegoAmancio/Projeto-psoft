@@ -26,15 +26,16 @@
         <my-navbar-aluno>
         </my-navbar-aluno>
     </div>
-    <div class="container panel panel-primary" id="conteudo" role="main">
-        <h3>Seja bem-vindo ao sistema de pré-matricula do curso de Ciência da Computação na UFCG</h3>
-        <p><label class="control-label  col-sm-2"> Aluno: </label> seunome</p>
-        <p><label class="control-label  col-sm-2"> Matricula: </label> suamatricula</p>
-        <p><label class="control-label  col-sm-2"> Email: </label> seuemail</p>
-        <p><label class="control-label  col-sm-2"> Periodo de entrada: </label> seusemestr</p>
+    <div class="container panel panel-primary" id="cadastroAluno" role="main">
+        <h3 class="text-center">Seja bem vindo ao sistema de pré matricula do curso de Ciência da Computação na UFCG</h3>
+        <p><label class="control-label  col-sm-2"> Aluno: </label> {{nome}} </p>
+        <p><label class="control-label  col-sm-2"> Matricula: </label> {{matricula}}</p>
+        <p><label class="control-label  col-sm-2"> Email: </label> {{email}}</p>
+        <p><label class="control-label  col-sm-2"> Periodo de entrada: </label> {{periodo}}</p>
         <p><label class="control-label  col-sm-2"> Curso: </label>CIÊNCIA DA COMPUTAÇÃO</p>
         <p><label class="control-label  col-sm-2"> Campos: </label> 1 - CAMPINA GRANDE</p>
     </div>
+    <script src="/Scripts/alunos.js"></script>
     <script src="/Scripts/autentication.js"></script>
     <script src="/Scripts/templates.js"></script>
 </body>
